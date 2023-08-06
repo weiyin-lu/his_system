@@ -42,11 +42,13 @@
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
         </dependency>
+<!--        flyway核心框架，版本必须和plugin一致（低于8.2.0才支持mysql）-->
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
+            <version>5.2.4</version>
         </dependency>
-
+<!--        mybatis-flex框架-->
         <dependency>
             <groupId>com.mybatis-flex</groupId>
             <artifactId>mybatis-flex-spring-boot-starter</artifactId>
@@ -58,7 +60,12 @@
             <version>1.5.2</version>
             <scope>provided</scope>
         </dependency>
-
+<!--        hikari地址池，配合mybatis-flex使用，springboot2.x必须使用hikari4.x-->
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>4.0.3</version>
+        </dependency>
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
