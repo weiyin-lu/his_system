@@ -61,10 +61,6 @@
                     <user>${jdbc.connection.user}</user>
                     <password>${jdbc.connection.password}</password>
                     <table>flyway_schema_history</table>
-                    <encoding>UTF-8</encoding>
-                    <locations>
-                        <location>classpath:migrations/mysql</location>
-                    </locations>
                 </configuration>
             </plugin>
 
