@@ -1,2 +1,11 @@
 server:
   port: 8000
+spring:
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+  datasource:
+    url: @jdbc.connection.url@
+    driver-class-name: @jdbc.driver.class@
+    username: @jdbc.connection.user@
+    password: @jdbc.connection.password@

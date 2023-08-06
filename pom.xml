@@ -17,6 +17,10 @@
     <description>moopoint</description>
     <properties>
         <java.version>11</java.version>
+        <jdbc.driver.class>com.mysql.cj.jdbc.Driver</jdbc.driver.class>
+        <jdbc.connection.url>jdbc:mysql://127.0.0.1:3306/moopoint?useUnicode=true&amp;characterEncoding=UTF-8&amp;allowMultiQueries=true&amp;serverTimezone=GMT%2B8</jdbc.connection.url>
+        <jdbc.connection.user>root</jdbc.connection.user>
+        <jdbc.connection.password>root</jdbc.connection.password>
     </properties>
     <dependencies>
         <dependency>
@@ -34,10 +38,36 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
+<!--            数据库控制插件flyway-->
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>5.2.4</version>
+                <configuration>
+                    <driver>${jdbc.driver.class}</driver>
+                    <url>${jdbc.connection.url}</url>
+                    <user>${jdbc.connection.user}</user>
+                    <password>${jdbc.connection.password}</password>
+                    <table>flyway_schema_history</table>
+                    <encoding>UTF-8</encoding>
+                    <locations>
+                        <location>classpath:migrations/mysql</location>
+                    </locations>
+                </configuration>
+            </plugin>
+
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
