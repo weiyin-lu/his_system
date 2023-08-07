@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * @Classname DepartmentServiceImpl
- * @Description 业务实现层代码生成器类
+ * @Description 科室管理service层实现类
  * @Version 1.0.0
  * @Date 2023/8/7 14:05
  * @Created by 陈浩东

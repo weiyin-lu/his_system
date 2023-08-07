@@ -9,9 +9,9 @@ import online.weiyin.moopoint.service.impl.DoctorServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 import static online.weiyin.moopoint.entity.table.DoctorTableDef.DOCTOR;
 
@@ -75,7 +75,7 @@ public class DoctorController {
     @ResponseBody
     public String searchDoctorByCondi(@RequestParam Map<String,Object> condition) {
 
-//        此处仍需处理，传入不包含值的参数时会导致查询失效
+        condition.values().removeAll(Collections.singleton(""));
 
         List<Doctor> doctorList = doctorService.listByMap(condition);
         return JSONUtil.toJsonPrettyStr(Result.ok(doctorList));

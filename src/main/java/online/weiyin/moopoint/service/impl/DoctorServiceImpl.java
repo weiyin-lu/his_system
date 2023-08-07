@@ -3,7 +3,6 @@ package online.weiyin.moopoint.service.impl;
 import com.mybatisflex.spring.service.impl.ServiceImpl;
 import online.weiyin.moopoint.entity.Doctor;
 import online.weiyin.moopoint.mapper.DoctorMapper;
-import online.weiyin.moopoint.service.DoctorService;
 import org.springframework.stereotype.Service;
 
 /**

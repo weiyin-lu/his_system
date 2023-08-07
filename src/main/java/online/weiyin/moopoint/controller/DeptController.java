@@ -17,7 +17,7 @@ import static online.weiyin.moopoint.entity.table.DepartmentTableDef.DEPARTMENT;
 
 /**
  * @Classname DeptController
- * @Description TODO
+ * @Description 科室管理业务
  * @Version 1.0.0
  * @Date 2023/8/7 14:23
  * @Created by 陈浩东
