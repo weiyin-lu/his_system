@@ -5,7 +5,7 @@ import online.weiyin.moopoint.entity.Department;
 
 /**
  * @Classname DepartmentService
- * @Description 业务层代码生成器类
+ * @Description 科室管理service层接口
  * @Version 1.0.0
  * @Date 2023/8/7 14:02
  * @Created by 陈浩东
