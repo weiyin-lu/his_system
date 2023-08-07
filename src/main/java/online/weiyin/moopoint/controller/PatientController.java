@@ -55,6 +55,7 @@ public class PatientController {
             return JSONUtil.toJsonPrettyStr(Result.fail("删除失败"));
         }
     }
+
 //  修改订单
     @PostMapping("update")
     @ResponseBody
@@ -68,5 +69,17 @@ public class PatientController {
         }
     }
 
+//  添加订单
+    @PostMapping("add")
+    @ResponseBody
+    public String addPatient(Patient patient) {
+
+        boolean save = patientService.save(patient);
+        if (save) {
+            return JSONUtil.toJsonPrettyStr(Result.success());
+        } else {
+            return JSONUtil.toJsonPrettyStr(Result.fail("添加失败"));
+        }
+    }
 
 }
