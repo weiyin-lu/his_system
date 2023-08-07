@@ -4,6 +4,7 @@ import cn.hutool.json.JSONUtil;
 import com.mybatisflex.core.query.QueryWrapper;
 import online.weiyin.moopoint.common.Result;
 import online.weiyin.moopoint.entity.Doctor;
+import online.weiyin.moopoint.interceptor.SkipAuth;
 import online.weiyin.moopoint.service.impl.DoctorServiceImpl;
 import online.weiyin.moopoint.util.TokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,7 @@ public class AuthController {
     DoctorServiceImpl doctorService;
     @PostMapping("/login")
     @ResponseBody
+    @SkipAuth //不受拦截器限制
     public String login(int id, String password) {
         QueryWrapper queryWrapper = QueryWrapper.create().where(DOCTOR.DOC_ID.eq(id))
                 .and(DOCTOR.PASSWORD.eq(password));
