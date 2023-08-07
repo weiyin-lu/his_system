@@ -5,12 +5,11 @@ import online.weiyin.moopoint.common.Result;
 import online.weiyin.moopoint.entity.Patient;
 import online.weiyin.moopoint.service.impl.PatientServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Classname PatientController
@@ -33,5 +32,13 @@ public class PatientController {
         return JSONUtil.toJsonPrettyStr(Result.ok(list));
     }
 
+//  根据指定条件查询订单
+    @PostMapping("/")
+    @ResponseBody
+    public String searchPatientByCondi(@RequestParam Map<String,Object> condition) {
+        condition.values().removeAll(Collections.singleton(""));
+        List<Patient> patients = patientService.listByMap(condition);
+        return JSONUtil.toJsonPrettyStr(Result.ok(patients));
+    }
 
 }
