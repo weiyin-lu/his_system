@@ -26,7 +26,8 @@ public class DoctorMapperTest {
         QueryWrapper queryWrapper = QueryWrapper.create()
                 .select()
                 .where(DOCTOR.DOC_ID.eq(1));
-//        DOCTOR对象使用mybatis-flex的APT功能实现，需要先编译一下项目，才能获得对应类的APT静态实例
+//        DOCTOR对象使用mybatis-flex的APT功能实现，需要先编译一下项目，
+//        才能获得对应类的APT静态实例
 //        https://mybatis-flex.com/zh/others/apt.html
         Doctor doctor = doctorMapper.selectOneByQuery(queryWrapper);
         System.out.println(doctor);

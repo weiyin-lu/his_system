@@ -5,12 +5,18 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * @Classname MybatisFlexConfig
+ * @Description mybatis-flex配置类
+ * @Version 1.0.0
+ * @Date 2023/08/06 下午 04:43
+ * @Created by 卢子昂
+ */
 @Configuration
 public class MybatisFlexConfig {
 
     private static final Logger logger = LoggerFactory
             .getLogger("mybatis-flex-sql");
-
 
     public MybatisFlexConfig() {
         //开启审计功能
