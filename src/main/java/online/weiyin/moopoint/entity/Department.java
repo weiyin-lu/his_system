@@ -2,6 +2,7 @@ package online.weiyin.moopoint.entity;
 
 import com.mybatisflex.annotation.Column;
 import com.mybatisflex.annotation.Id;
+import com.mybatisflex.annotation.KeyType;
 import com.mybatisflex.annotation.Table;
 import lombok.Data;
 
@@ -13,9 +14,10 @@ import lombok.Data;
  * @Created by 卢子昂
  */
 @Data
-@Table("Dept")
+@Table("dept")
 public class Department {
-    @Id
+
+    @Id(keyType = KeyType.Auto)
     @Column("dept_id")
     private Integer deptId;
     @Column("dept_name")
@@ -24,5 +26,6 @@ public class Department {
     private String deptType;
     @Column("dept_func")
     private String deptFunc;
+    @Column(isLogicDelete = true)
     private Integer status;
 }
