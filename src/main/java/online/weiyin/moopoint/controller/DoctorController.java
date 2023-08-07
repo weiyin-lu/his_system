@@ -28,7 +28,7 @@ import static online.weiyin.moopoint.entity.table.DoctorTableDef.DOCTOR;
 public class DoctorController {
     @Autowired
     DoctorServiceImpl doctorService;
-
+//    查询有效用户
     @GetMapping("/")
     @ResponseBody
     public String getDoctorsList() {
@@ -38,4 +38,16 @@ public class DoctorController {
         System.out.println(list);
         return JSONUtil.toJsonPrettyStr(Result.ok(list));
     }
+//    逻辑删除用户
+    @GetMapping("/remove")
+    @ResponseBody
+    public String removeDoctor(int id) {
+        boolean b = doctorService.removeById(id);
+        if (b) {
+            return JSONUtil.toJsonPrettyStr(Result.success());
+        } else {
+            return JSONUtil.toJsonPrettyStr(Result.fail("删除失败，不存在该用户"));
+        }
+    }
+
 }

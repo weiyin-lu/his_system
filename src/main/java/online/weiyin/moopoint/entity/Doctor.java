@@ -29,5 +29,6 @@ public class Doctor {
     private Integer schedule;
     @Column("reg_id")
     private Integer regId;
+    @Column(isLogicDelete = true)
     private Integer status;
 }

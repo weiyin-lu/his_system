@@ -1,5 +1,6 @@
 package online.weiyin.moopoint.config;
 
+import com.mybatisflex.core.FlexGlobalConfig;
 import com.mybatisflex.core.audit.AuditManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,5 +28,12 @@ public class MybatisFlexConfig {
                 logger.info("{},{}ms", auditMessage.getFullSql()
                         , auditMessage.getElapsedTime())
         );
+
+        //逻辑删除标准
+        FlexGlobalConfig globalConfig = FlexGlobalConfig.getDefaultConfig();
+        //设置数据库正常时的值
+        globalConfig.setNormalValueOfLogicDelete(1);
+        //设置数据已被删除时的值
+        globalConfig.setDeletedValueOfLogicDelete(0);
     }
 }
