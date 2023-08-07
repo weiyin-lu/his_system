@@ -4,6 +4,7 @@ import com.mybatisflex.spring.service.impl.ServiceImpl;
 import online.weiyin.moopoint.entity.Doctor;
 import online.weiyin.moopoint.mapper.DoctorMapper;
 import online.weiyin.moopoint.service.DoctorService;
+import org.springframework.stereotype.Service;
 
 /**
  * @Classname DoctorServiceImpl
@@ -12,5 +13,6 @@ import online.weiyin.moopoint.service.DoctorService;
  * @Date 2023/08/07 下午 01:40
  * @Created by 卢子昂
  */
+@Service
 public class DoctorServiceImpl extends ServiceImpl<DoctorMapper, Doctor> {
 }
