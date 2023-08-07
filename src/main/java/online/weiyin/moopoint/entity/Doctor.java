@@ -2,6 +2,7 @@ package online.weiyin.moopoint.entity;
 
 import com.mybatisflex.annotation.Column;
 import com.mybatisflex.annotation.Id;
+import com.mybatisflex.annotation.KeyType;
 import com.mybatisflex.annotation.Table;
 import lombok.Data;
 
@@ -16,7 +17,7 @@ import lombok.Data;
 @Table("doctor")
 public class Doctor {
 
-    @Id
+    @Id(keyType = KeyType.Auto)
     @Column("doc_id")
     private Integer docId;
     private String password;

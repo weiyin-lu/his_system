@@ -7,10 +7,7 @@ import online.weiyin.moopoint.common.Result;
 import online.weiyin.moopoint.entity.Doctor;
 import online.weiyin.moopoint.service.impl.DoctorServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -35,7 +32,6 @@ public class DoctorController {
         QueryWrapper query = QueryWrapper.create()
                 .where(DOCTOR.STATUS.eq(1));
         List<Doctor> list = doctorService.list(query);
-        System.out.println(list);
         return JSONUtil.toJsonPrettyStr(Result.ok(list));
     }
 //    逻辑删除用户
@@ -46,7 +42,30 @@ public class DoctorController {
         if (b) {
             return JSONUtil.toJsonPrettyStr(Result.success());
         } else {
-            return JSONUtil.toJsonPrettyStr(Result.fail("删除失败，不存在该用户"));
+            return JSONUtil.toJsonPrettyStr(Result
+                    .fail("删除失败，不存在该用户"));
+        }
+    }
+//    添加用户
+    @PostMapping("/add")
+    @ResponseBody
+    public String addDoctor(Doctor doctor) {
+        boolean save = doctorService.save(doctor);
+        if(save) {
+            return JSONUtil.toJsonPrettyStr(Result.success());
+        } else {
+            return JSONUtil.toJsonPrettyStr(Result.fail("添加失败"));
+        }
+    }
+//    修改用户
+    @PostMapping("/update")
+    @ResponseBody
+    public String updateDoctor(Doctor doctor) {
+        boolean update = doctorService.updateById(doctor);//null值不更新到表中
+        if(update) {
+            return JSONUtil.toJsonPrettyStr(Result.success());
+        } else {
+            return JSONUtil.toJsonPrettyStr(Result.fail("修改失败"));
         }
     }
 
