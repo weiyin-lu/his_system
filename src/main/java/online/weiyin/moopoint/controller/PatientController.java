@@ -24,7 +24,7 @@ public class PatientController {
     @Autowired
     PatientServiceImpl patientService;
 
-//  查询所有订单
+//  查询所有挂号记录
     @GetMapping("/")
     @ResponseBody
     public String getPatientList() {
@@ -33,7 +33,7 @@ public class PatientController {
         return JSONUtil.toJsonPrettyStr(Result.ok(list));
     }
 
-//  根据指定条件查询订单
+//  根据指定条件查询挂号信息
     @PostMapping("/")
     @ResponseBody
     public String searchPatientByCondi(@RequestParam Map<String,Object> condition) {
@@ -43,20 +43,24 @@ public class PatientController {
         return JSONUtil.toJsonPrettyStr(Result.ok(patients));
     }
 
+    /**
+     * 不建议在挂号功能中提供删除功能
+     * 卢子昂_2023.08.07_20:34
+     */
 //  删除订单
-    @PostMapping("/remove")
-    @ResponseBody
-    public String removePatient(int id) {
-
-        boolean remove = patientService.removeById(id);
-        if (remove) {
-            return JSONUtil.toJsonPrettyStr(Result.success());
-        } else {
-            return JSONUtil.toJsonPrettyStr(Result.fail("删除失败"));
-        }
-    }
-
-//  修改订单
+//    @PostMapping("/remove")
+//    @ResponseBody
+//    public String removePatient(int id) {
+//
+//        boolean remove = patientService.removeById(id);
+//        if (remove) {
+//            return JSONUtil.toJsonPrettyStr(Result.success());
+//        } else {
+//            return JSONUtil.toJsonPrettyStr(Result.fail("删除失败"));
+//        }
+//    }
+/** 需要细化此功能 卢子昂_2023.08.07_20:34 */
+//  修改挂号信息
     @PostMapping("update")
     @ResponseBody
     public String updatePatient(Patient patient) {
@@ -69,7 +73,7 @@ public class PatientController {
         }
     }
 
-//  添加订单
+//  挂号
     @PostMapping("add")
     @ResponseBody
     public String addPatient(Patient patient) {
