@@ -18,7 +18,7 @@ import static online.weiyin.moopoint.entity.table.DepartmentTableDef.DEPARTMENT;
 /**
  * @Classname DeptController
  * @Description 科室管理业务
- * @Version 1.0.0
+ * @Version 1.0.1
  * @Date 2023/8/7 14:23
  * @Created by 陈浩东
  */
@@ -41,7 +41,7 @@ public class DeptController {
     }
 
 //  根据条件查找对应科室
-    @PostMapping("/deptname")
+    @PostMapping("/")
     @ResponseBody
     public String getDeptByChooseList(@RequestParam Map<String,Object> map) {
 
@@ -56,9 +56,9 @@ public class DeptController {
     }
 
 //  根据传入的id删除对应科室
-    @PostMapping("/removeById")
+    @DeleteMapping("/{id}")
     @ResponseBody
-    public String removeDeptById(int id) {
+    public String removeDeptById(@PathVariable int id) {
 
         boolean remove = departmentService.removeById(id);
         if (remove) {

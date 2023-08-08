@@ -27,7 +27,7 @@ import static online.weiyin.moopoint.entity.table.DoctorTableDef.DOCTOR;
 public class AuthController {
     @Autowired
     DoctorServiceImpl doctorService;
-    @PostMapping("/login")
+    @PostMapping("/")
     @ResponseBody
     @SkipAuth //不受拦截器限制
     public String login(@RequestBody LoginDTO login,

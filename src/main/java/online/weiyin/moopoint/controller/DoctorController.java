@@ -18,7 +18,7 @@ import static online.weiyin.moopoint.entity.table.DoctorTableDef.DOCTOR;
 /**
  * @Classname DoctorController
  * @Description 用户管理业务
- * @Version 1.0.0
+ * @Version 1.0.1
  * @Date 2023/08/07 下午 01:47
  * @Created by 卢子昂
  */
@@ -37,9 +37,9 @@ public class DoctorController {
         return JSONUtil.toJsonPrettyStr(Result.ok(list));
     }
 //    逻辑删除用户
-    @GetMapping("/remove")
+    @DeleteMapping("/{id}")
     @ResponseBody
-    public String removeDoctor(int id) {
+    public String removeDoctor(@PathVariable int id) {
         boolean b = doctorService.removeById(id);
         if (b) {
             return JSONUtil.toJsonPrettyStr(Result.success());
@@ -49,7 +49,7 @@ public class DoctorController {
         }
     }
 //    添加用户
-    @PostMapping("/add")
+    @PutMapping("/add")
     @ResponseBody
     public String addDoctor(Doctor doctor) {
         boolean save = doctorService.save(doctor);
@@ -60,7 +60,7 @@ public class DoctorController {
         }
     }
 //    修改用户
-    @PostMapping("/update")
+    @PutMapping("/update")
     @ResponseBody
     public String updateDoctor(Doctor doctor) {
         boolean update = doctorService.updateById(doctor);//null值不更新到表中

@@ -15,7 +15,7 @@ import java.util.Map;
 /**
  * @Classname PatientController
  * @Description 挂号管理业务
- * @Version 1.0.0
+ * @Version 1.0.1
  * @Date 2023/8/7 18:18
  * @Created by 陈浩东
  */
@@ -83,7 +83,7 @@ public class PatientController {
 
 //    挂号或修改
 //    首次挂号时主键自动递增，修改时应当传入主键，否则会创建一条新的数据
-    @PostMapping("/saveOrUpdate")
+    @PutMapping("/")
     @ResponseBody
     public String addPatient(@RequestBody Patient patient) {
 //        强制设置挂号固定值

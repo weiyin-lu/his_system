@@ -15,7 +15,7 @@ import static online.weiyin.moopoint.entity.table.RegisterTableDef.REGISTER;
 /**
  * @Classname RegisterController
  * @Description 挂号级别管理业务
- * @Version 1.0.0
+ * @Version 1.0.1
  * @Date 2023/8/8 9:53
  * @Created by 陈浩东
  */
@@ -35,9 +35,9 @@ public class RegisterController {
     }
 
 //  逻辑删除挂号级别
-    @PostMapping("remove")
+    @DeleteMapping("/{id}")
     @ResponseBody
-    public String removeRegister(int id) {
+    public String removeRegister(@PathVariable int id) {
         boolean remove = registerService.removeById(id);
         if (remove) {
             return JSONUtil.toJsonPrettyStr(Result.success());
@@ -47,7 +47,7 @@ public class RegisterController {
     }
 
 //  修改挂号级别信息
-    @PostMapping("update")
+    @PutMapping("/update")
     @ResponseBody
     public String updateRegister(Register register) {
         boolean update = registerService.updateById(register);
@@ -59,7 +59,7 @@ public class RegisterController {
     }
 
 //  添加挂号级别
-    @PostMapping("add")
+    @PutMapping("/add")
     @ResponseBody
     public String addRegister(Register register) {
         boolean save = registerService.save(register);
