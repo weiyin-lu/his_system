@@ -4,6 +4,7 @@ import com.mybatisflex.spring.service.impl.ServiceImpl;
 import online.weiyin.moopoint.entity.Register;
 import online.weiyin.moopoint.mapper.RegisterMapper;
 import online.weiyin.moopoint.service.RegisterService;
+import org.springframework.stereotype.Service;
 
 /**
  * @Classname RegisterServiceImpl
@@ -12,6 +13,7 @@ import online.weiyin.moopoint.service.RegisterService;
  * @Date 2023/8/8 9:48
  * @Created by 陈浩东
  */
+@Service
 public class RegisterServiceImpl extends ServiceImpl<RegisterMapper, Register>
         implements RegisterService {
 }

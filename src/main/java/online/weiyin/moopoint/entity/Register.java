@@ -29,5 +29,6 @@ public class Register {
     @Column("reg_order")
     private Integer regOrder;
     private String subject;
+    @Column(isLogicDelete = true)
     private Integer status;
 }
