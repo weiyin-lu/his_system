@@ -25,8 +25,7 @@ public class MybatisFlexConfig {
 
         //设置 SQL 审计收集器
         AuditManager.setMessageCollector(auditMessage ->
-                logger.info("{},{}ms", auditMessage.getFullSql()
-                        , auditMessage.getElapsedTime())
+                logger.info("{},{}ms", auditMessage.getFullSql(), auditMessage.getElapsedTime())
         );
 
         //逻辑删除标准

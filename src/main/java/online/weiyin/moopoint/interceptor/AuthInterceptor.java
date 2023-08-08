@@ -19,8 +19,7 @@ import java.lang.reflect.Method;
  */
 public class AuthInterceptor implements HandlerInterceptor {
     @Override
-    public boolean preHandle(HttpServletRequest request,
-                             HttpServletResponse response, Object handler)
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
 //        设置响应字符编码，用于在拦截器返回时返回中文
         response.setCharacterEncoding("UTF-8");

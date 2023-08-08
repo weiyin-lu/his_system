@@ -30,8 +30,7 @@ public class AuthController {
     @PostMapping("/")
     @ResponseBody
     @SkipAuth //不受拦截器限制
-    public String login(@RequestBody LoginDTO login,
-                        HttpServletRequest request) {
+    public String login(@RequestBody LoginDTO login, HttpServletRequest request) {
 
         System.out.println("login run");
         System.out.println(login);

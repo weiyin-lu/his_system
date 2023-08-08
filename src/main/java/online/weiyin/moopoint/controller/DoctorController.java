@@ -27,15 +27,6 @@ import static online.weiyin.moopoint.entity.table.DoctorTableDef.DOCTOR;
 public class DoctorController {
     @Autowired
     DoctorServiceImpl doctorService;
-//    查询有效用户
-    @GetMapping("/")
-    @ResponseBody
-    public String getDoctorsList() {
-        QueryWrapper query = QueryWrapper.create()
-                .where(DOCTOR.STATUS.eq(1));
-        List<Doctor> list = doctorService.list(query);
-        return JSONUtil.toJsonPrettyStr(Result.ok(list));
-    }
 //    逻辑删除用户
     @DeleteMapping("/{id}")
     @ResponseBody
@@ -79,6 +70,16 @@ public class DoctorController {
 
         List<Doctor> doctorList = doctorService.listByMap(condition);
         return JSONUtil.toJsonPrettyStr(Result.ok(doctorList));
+    }
+
+//    查询有效用户
+    @Deprecated
+    @ResponseBody
+    public String getDoctorsList() {
+        QueryWrapper query = QueryWrapper.create()
+                .where(DOCTOR.STATUS.eq(1));
+        List<Doctor> list = doctorService.list(query);
+        return JSONUtil.toJsonPrettyStr(Result.ok(list));
     }
 
 }

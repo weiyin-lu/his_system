@@ -2,6 +2,9 @@ package online.weiyin.moopoint.service;
 
 import com.mybatisflex.core.service.IService;
 import online.weiyin.moopoint.entity.Doctor;
+import online.weiyin.moopoint.entity.dto.DoctorDTO;
+
+import java.util.List;
 
 /**
  * @Classname DoctorService
@@ -11,5 +14,5 @@ import online.weiyin.moopoint.entity.Doctor;
  * @Created by 卢子昂
  */
 public interface DoctorService extends IService<Doctor> {
-
+    List<DoctorDTO> selectDoctorList();
 }
