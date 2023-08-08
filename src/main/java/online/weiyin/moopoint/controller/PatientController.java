@@ -20,7 +20,6 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/patients")
-@CrossOrigin
 public class PatientController {
     @Autowired
     PatientServiceImpl patientService;

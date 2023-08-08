@@ -1,7 +1,9 @@
 package online.weiyin.moopoint.config;
 
 import online.weiyin.moopoint.interceptor.AuthInterceptor;
+import online.weiyin.moopoint.interceptor.CORSInterceptor;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -15,9 +17,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
+//    拦截器
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new AuthInterceptor());
-
+        registry.addInterceptor(new CORSInterceptor()).addPathPatterns("/**"); //跨域拦截器，必须在最上边
+        registry.addInterceptor(new AuthInterceptor()); //token拦截器
     }
 }

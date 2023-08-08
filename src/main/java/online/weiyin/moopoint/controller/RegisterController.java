@@ -21,7 +21,6 @@ import static online.weiyin.moopoint.entity.table.RegisterTableDef.REGISTER;
  */
 @RestController
 @RequestMapping("/registers")
-@CrossOrigin
 public class RegisterController {
     @Autowired
     RegisterServiceImpl registerService;
