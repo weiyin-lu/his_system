@@ -1,10 +1,10 @@
 package online.weiyin.moopoint.controller;
 
-import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.mybatisflex.core.query.QueryWrapper;
 import online.weiyin.moopoint.common.Result;
 import online.weiyin.moopoint.entity.Doctor;
+import online.weiyin.moopoint.entity.dto.DoctorDTO;
 import online.weiyin.moopoint.service.impl.DoctorServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +27,14 @@ import static online.weiyin.moopoint.entity.table.DoctorTableDef.DOCTOR;
 public class DoctorController {
     @Autowired
     DoctorServiceImpl doctorService;
+//    查询医生的基本信息
+    @GetMapping("/")
+    @ResponseBody
+    public String getDoctorsInfo() {
+        List<DoctorDTO> list = doctorService.selectDoctorList();
+        return JSONUtil.toJsonPrettyStr(Result.ok(list));
+    }
+
 //    逻辑删除用户
     @DeleteMapping("/{id}")
     @ResponseBody
