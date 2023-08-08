@@ -47,5 +47,28 @@ public class RegisterController {
         }
     }
 
+//  修改挂号级别信息
+    @PostMapping("update")
+    @ResponseBody
+    public String updateRegister(Register register) {
+        boolean update = registerService.updateById(register);
+        if (update) {
+            return JSONUtil.toJsonPrettyStr(Result.success());
+        } else {
+            return JSONUtil.toJsonPrettyStr(Result.fail("修改失败"));
+        }
+    }
+
+//  添加挂号级别
+    @PostMapping("add")
+    @ResponseBody
+    public String addRegister(Register register) {
+        boolean save = registerService.save(register);
+        if (save) {
+            return JSONUtil.toJsonPrettyStr(Result.success());
+        } else {
+            return JSONUtil.toJsonPrettyStr(Result.fail("添加失败"));
+        }
+    }
 
 }
