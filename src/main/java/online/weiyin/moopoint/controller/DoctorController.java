@@ -24,6 +24,7 @@ import static online.weiyin.moopoint.entity.table.DoctorTableDef.DOCTOR;
  */
 @RestController
 @RequestMapping("/doctors")
+@CrossOrigin
 public class DoctorController {
     @Autowired
     DoctorServiceImpl doctorService;

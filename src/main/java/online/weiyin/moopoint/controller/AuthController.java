@@ -8,10 +8,7 @@ import online.weiyin.moopoint.interceptor.SkipAuth;
 import online.weiyin.moopoint.service.impl.DoctorServiceImpl;
 import online.weiyin.moopoint.util.TokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import static online.weiyin.moopoint.entity.table.DoctorTableDef.DOCTOR;
 
@@ -24,6 +21,7 @@ import static online.weiyin.moopoint.entity.table.DoctorTableDef.DOCTOR;
  */
 @RestController
 @RequestMapping("/auth")
+@CrossOrigin
 public class AuthController {
     @Autowired
     DoctorServiceImpl doctorService;

@@ -24,6 +24,7 @@ import static online.weiyin.moopoint.entity.table.DepartmentTableDef.DEPARTMENT;
  */
 @RestController
 @RequestMapping("/dept")
+@CrossOrigin
 public class DeptController {
     @Autowired
     DepartmentServiceImpl departmentService;
