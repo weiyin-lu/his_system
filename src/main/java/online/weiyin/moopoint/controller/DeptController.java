@@ -43,7 +43,7 @@ public class DeptController {
 //  根据条件查找对应科室
     @PostMapping("/")
     @ResponseBody
-    public String getDeptByChooseList(@RequestParam Map<String,Object> map) {
+    public String getDeptByChooseList(@RequestBody Map<String,Object> map) {
 
 //      去除键值为空字符串的键
         map.values().removeAll(Collections.singleton(""));
@@ -72,7 +72,7 @@ public class DeptController {
 //  添加科室
     @PostMapping("/add")
     @ResponseBody
-    public String addDept(Department department) {
+    public String addDept(@RequestBody Department department) {
         System.out.println(department);
         boolean save = departmentService.save(department);
         if (save) {
@@ -82,9 +82,9 @@ public class DeptController {
         }
     }
 //  修改科室
-    @PostMapping("/update")
+    @PutMapping("/update")
     @ResponseBody
-    public String updateDept(Department department) {
+    public String updateDept(@RequestBody Department department) {
         boolean update = departmentService.updateById(department);
         if (update) {
             return JSONUtil.toJsonPrettyStr(Result.success());

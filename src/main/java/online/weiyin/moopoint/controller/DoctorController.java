@@ -51,7 +51,7 @@ public class DoctorController {
 //    添加用户
     @PutMapping("/add")
     @ResponseBody
-    public String addDoctor(Doctor doctor) {
+    public String addDoctor(@RequestBody Doctor doctor) {
         boolean save = doctorService.save(doctor);
         if(save) {
             return JSONUtil.toJsonPrettyStr(Result.success());
@@ -62,7 +62,7 @@ public class DoctorController {
 //    修改用户
     @PutMapping("/update")
     @ResponseBody
-    public String updateDoctor(Doctor doctor) {
+    public String updateDoctor(@RequestBody Doctor doctor) {
         boolean update = doctorService.updateById(doctor);//null值不更新到表中
         if(update) {
             return JSONUtil.toJsonPrettyStr(Result.success());
@@ -73,7 +73,7 @@ public class DoctorController {
 //    模糊查询
     @PostMapping("/")
     @ResponseBody
-    public String searchDoctorByCondi(@RequestParam Map<String,Object> condition) {
+    public String searchDoctorByCondi(@RequestBody Map<String,Object> condition) {
 
         condition.values().removeAll(Collections.singleton(""));
 

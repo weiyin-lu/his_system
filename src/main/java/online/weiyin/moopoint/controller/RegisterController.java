@@ -49,7 +49,7 @@ public class RegisterController {
 //  修改挂号级别信息
     @PutMapping("/update")
     @ResponseBody
-    public String updateRegister(Register register) {
+    public String updateRegister(@RequestBody Register register) {
         boolean update = registerService.updateById(register);
         if (update) {
             return JSONUtil.toJsonPrettyStr(Result.success());
@@ -61,7 +61,7 @@ public class RegisterController {
 //  添加挂号级别
     @PutMapping("/add")
     @ResponseBody
-    public String addRegister(Register register) {
+    public String addRegister(@RequestBody Register register) {
         boolean save = registerService.save(register);
         if (save) {
             return JSONUtil.toJsonPrettyStr(Result.success());
