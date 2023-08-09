@@ -36,7 +36,7 @@ public class ConsumeServiceImpl extends ServiceImpl<ConsumeMapper, Consume> impl
     }
 
 //  根据挂号记录id获取药房信息
-    public List<Consume> selectMedicineCheckoutListByRecordId(int recordId) {
+    public List<Consume> selectMedicineByRecordId(int recordId) {
         QueryWrapper wrapper = QueryWrapper.create()
                 .where(CONSUME.RECORD_ID.eq(recordId))
                 .and(CONSUME.TYPE.eq("中药"))

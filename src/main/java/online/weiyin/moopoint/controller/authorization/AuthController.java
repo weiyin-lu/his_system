@@ -1,4 +1,4 @@
-package online.weiyin.moopoint.controller;
+package online.weiyin.moopoint.controller.authorization;
 
 import cn.hutool.json.JSONUtil;
 import com.mybatisflex.core.query.QueryWrapper;

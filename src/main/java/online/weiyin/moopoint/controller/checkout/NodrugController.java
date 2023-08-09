@@ -1,4 +1,4 @@
-package online.weiyin.moopoint.controller;
+package online.weiyin.moopoint.controller.checkout;
 
 import cn.hutool.json.JSONUtil;
 import online.weiyin.moopoint.common.Result;

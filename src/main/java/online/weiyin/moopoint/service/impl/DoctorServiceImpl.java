@@ -29,7 +29,7 @@ public class DoctorServiceImpl extends ServiceImpl<DoctorMapper, Doctor>
     @Autowired
     DoctorMapper doctorMapper;
 
-//        根据DoctorDTO构造一个多表查询wrapper，在其他方法中添加条件以实现复用
+//    根据DoctorDTO构造一个多表查询wrapper，在其他方法中添加条件以实现复用
     QueryWrapper wrapper = QueryWrapper.create()
             .select(DOCTOR.DOC_ID,
                     DOCTOR.NAME,
