@@ -1,7 +1,7 @@
 package online.weiyin.moopoint.controller.medicine;
 
 import cn.hutool.json.JSONUtil;
-import online.weiyin.moopoint.common.Result;
+import online.weiyin.moopoint.entity.common.Result;
 import online.weiyin.moopoint.entity.Consume;
 import online.weiyin.moopoint.entity.Patient;
 import online.weiyin.moopoint.service.impl.ConsumeServiceImpl;

@@ -1,7 +1,7 @@
 package online.weiyin.moopoint.interceptor;
 
 import cn.hutool.json.JSONUtil;
-import online.weiyin.moopoint.common.Result;
+import online.weiyin.moopoint.entity.common.Result;
 import online.weiyin.moopoint.util.TokenUtil;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;

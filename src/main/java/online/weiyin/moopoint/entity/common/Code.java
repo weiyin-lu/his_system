@@ -1,4 +1,4 @@
-package online.weiyin.moopoint.common;
+package online.weiyin.moopoint.entity.common;
 
 /**
  * @Classname Code

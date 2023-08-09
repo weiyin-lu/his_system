@@ -2,7 +2,7 @@ package online.weiyin.moopoint.controller;
 
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.json.JSONUtil;
-import online.weiyin.moopoint.common.Result;
+import online.weiyin.moopoint.entity.common.Result;
 import online.weiyin.moopoint.entity.Patient;
 import online.weiyin.moopoint.service.impl.PatientServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -2,7 +2,7 @@ package online.weiyin.moopoint.controller.admin;
 
 import cn.hutool.json.JSONUtil;
 import com.mybatisflex.core.query.QueryWrapper;
-import online.weiyin.moopoint.common.Result;
+import online.weiyin.moopoint.entity.common.Result;
 import online.weiyin.moopoint.entity.Doctor;
 import online.weiyin.moopoint.entity.dto.DoctorDTO;
 import online.weiyin.moopoint.service.impl.DoctorServiceImpl;

@@ -2,7 +2,7 @@ package online.weiyin.moopoint.controller.medicine;
 
 import cn.hutool.json.JSONUtil;
 import com.mybatisflex.core.query.QueryWrapper;
-import online.weiyin.moopoint.common.Result;
+import online.weiyin.moopoint.entity.common.Result;
 import online.weiyin.moopoint.entity.Medicine;
 import online.weiyin.moopoint.service.impl.MedicineServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
