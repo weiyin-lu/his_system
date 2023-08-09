@@ -44,7 +44,7 @@ public class CheckoutConsumeController {
 //    给出检查结果
     @PutMapping("/")
     @ResponseBody
-    public String updateResult(CheckOutDTO result) {
+    public String updateResult(@RequestBody CheckOutDTO result) {
         boolean b = consumeService.updateResultById(result);
         if (b) {
             return JSONUtil.toJsonPrettyStr(Result.success());
