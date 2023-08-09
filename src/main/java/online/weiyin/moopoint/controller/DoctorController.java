@@ -27,7 +27,7 @@ import static online.weiyin.moopoint.entity.table.DoctorTableDef.DOCTOR;
 public class DoctorController {
     @Autowired
     DoctorServiceImpl doctorService;
-//    查询医生的基本信息
+//    查询有效医生的基本信息
     @GetMapping("/")
     @ResponseBody
     public String getDoctorsInfo() {
@@ -35,10 +35,10 @@ public class DoctorController {
         return JSONUtil.toJsonPrettyStr(Result.ok(list));
     }
 
-//    逻辑删除用户
+//    逻辑删除医生
     @DeleteMapping("/{id}")
     @ResponseBody
-    public String removeDoctor(@PathVariable int id) {
+    public String removeDoctorById(@PathVariable int id) {
         boolean b = doctorService.removeById(id);
         if (b) {
             return JSONUtil.toJsonPrettyStr(Result.success());
@@ -47,7 +47,7 @@ public class DoctorController {
                     .fail("删除失败，不存在该用户"));
         }
     }
-//    添加用户
+//    添加医生
     @PutMapping("/add")
     @ResponseBody
     public String addDoctor(@RequestBody Doctor doctor) {
@@ -58,7 +58,7 @@ public class DoctorController {
             return JSONUtil.toJsonPrettyStr(Result.fail("添加失败"));
         }
     }
-//    修改用户
+//    修改医生信息
     @PutMapping("/update")
     @ResponseBody
     public String updateDoctor(@RequestBody Doctor doctor) {

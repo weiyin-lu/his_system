@@ -4,6 +4,7 @@ import com.mybatisflex.spring.service.impl.ServiceImpl;
 import online.weiyin.moopoint.entity.Nodrug;
 import online.weiyin.moopoint.mapper.NodrugMapper;
 import online.weiyin.moopoint.service.NodrugService;
+import org.springframework.stereotype.Service;
 
 /**
  * @Classname NodrugServiceImpl
@@ -12,5 +13,6 @@ import online.weiyin.moopoint.service.NodrugService;
  * @Date 2023/08/09 下午 02:40
  * @Created by 卢子昂
  */
+@Service
 public class NodrugServiceImpl extends ServiceImpl<NodrugMapper, Nodrug> implements NodrugService {
 }
