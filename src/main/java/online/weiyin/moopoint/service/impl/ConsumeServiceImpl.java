@@ -17,7 +17,7 @@ import static online.weiyin.moopoint.entity.table.ConsumeTableDef.CONSUME;
 /**
  * @Classname ConsumeServiceImpl
  * @Description 医技/药房订单service实现类
- * @Version 1.0.1
+ * @Version 1.0.2
  * @Date 2023/08/09 下午 02:18
  * @Created by 卢子昂
  */
@@ -56,9 +56,27 @@ public class ConsumeServiceImpl extends ServiceImpl<ConsumeMapper, Consume> impl
         consume.setResults(result.getResults());
 
         int update = consumeMapper.update(consume);
-        return update > 0;
+        return update > 0;    }
+
+//    检查支付状态
+    @Override
+    public boolean checkPayment(int id) {
+        QueryWrapper wrapper = QueryWrapper.create()
+                .select(CONSUME.PAYMENT)
+                .where(CONSUME.ID.eq(id));
+        Consume payment = consumeMapper.selectOneByQuery(wrapper);
+        return payment.getPayment() == 1;
     }
 
+//    更新执行状态
+    @Override
+    public boolean updateExecute(int id) {
+        Consume consume = UpdateEntity.of(Consume.class, id);
+        consume.setExecute(1);
+
+        int update = consumeMapper.update(consume);
+        return update > 0;
+    }
 
 
 }
