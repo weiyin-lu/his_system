@@ -19,7 +19,7 @@ import java.util.List;
  * @Created by 陈浩东
  */
 @RestController
-@RequestMapping("/checkouts")
+@RequestMapping("/medicinecheckouts")
 public class MedicineCheckoutConsumeController {
 
     @Autowired
