@@ -23,5 +23,7 @@ public interface ConsumeService extends IService<Consume> {
 
     boolean checkPayment(int id);
 
-    boolean updateExecute(int id);
+    boolean updateExecute(int id,int execute);
+
+    boolean updateTakeMed(int id);
 }

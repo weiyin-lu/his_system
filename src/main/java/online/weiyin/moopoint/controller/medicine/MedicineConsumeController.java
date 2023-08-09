@@ -50,7 +50,7 @@ public class MedicineConsumeController {
     public String startCheckout(@PathVariable int id) {
         boolean b = consumeService.checkPayment(id);
         if (b) {
-            boolean b1 = consumeService.updateExecute(id);
+            boolean b1 = consumeService.updateExecute(id,1);
             if (b1) {
                 return JSONUtil.toJsonPrettyStr(Result.success());
             } else {
@@ -60,5 +60,25 @@ public class MedicineConsumeController {
             return JSONUtil.toJsonPrettyStr(Result.fail("未付款"));
         }
     }
+
+//  退药
+    @GetMapping("/back/{id}")
+    @ResponseBody
+    public String backCheckout(@PathVariable int id) {
+        boolean b = consumeService.checkPayment(id);
+        if (b) {
+            boolean b1 = consumeService.updateExecute(id,0);
+//          退药标记
+            boolean b2 = consumeService.updateTakeMed(1);
+            if (b1 && b2) {
+                return JSONUtil.toJsonPrettyStr(Result.success());
+            } else {
+                return JSONUtil.toJsonPrettyStr(Result.fail("操作失败"));
+            }
+        } else {
+            return JSONUtil.toJsonPrettyStr(Result.fail("未付款"));
+        }
+    }
+
 
 }

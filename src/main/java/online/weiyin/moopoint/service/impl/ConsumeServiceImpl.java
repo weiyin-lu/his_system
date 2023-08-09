@@ -70,7 +70,16 @@ public class ConsumeServiceImpl extends ServiceImpl<ConsumeMapper, Consume> impl
 
 //    更新执行状态
     @Override
-    public boolean updateExecute(int id) {
+    public boolean updateExecute(int id,int execute) {
+        Consume consume = UpdateEntity.of(Consume.class, id);
+        consume.setExecute(execute);
+
+        int update = consumeMapper.update(consume);
+        return update > 0;
+    }
+
+    @Override
+    public boolean updateTakeMed(int id) {
         Consume consume = UpdateEntity.of(Consume.class, id);
         consume.setExecute(1);
 

@@ -47,7 +47,7 @@ public class CheckoutConsumeController {
     public String startCheckout(@PathVariable int id) {
         boolean b = consumeService.checkPayment(id);
         if (b) {
-            boolean b1 = consumeService.updateExecute(id);
+            boolean b1 = consumeService.updateExecute(id,1);
             if (b1) {
                 return JSONUtil.toJsonPrettyStr(Result.success());
             } else {
