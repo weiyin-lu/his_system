@@ -1,5 +1,6 @@
 package online.weiyin.moopoint.mapper;
 
+import com.mybatisflex.core.query.QueryWrapper;
 import online.weiyin.moopoint.entity.Department;
 import online.weiyin.moopoint.service.impl.DepartmentServiceImpl;
 import org.junit.jupiter.api.Test;
