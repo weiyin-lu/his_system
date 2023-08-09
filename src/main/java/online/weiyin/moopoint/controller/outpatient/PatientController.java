@@ -1,4 +1,4 @@
-package online.weiyin.moopoint.controller;
+package online.weiyin.moopoint.controller.outpatient;
 
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.json.JSONUtil;

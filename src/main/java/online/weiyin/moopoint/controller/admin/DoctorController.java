@@ -43,8 +43,7 @@ public class DoctorController {
         if (b) {
             return JSONUtil.toJsonPrettyStr(Result.success());
         } else {
-            return JSONUtil.toJsonPrettyStr(Result
-                    .fail("删除失败，不存在该用户"));
+            return JSONUtil.toJsonPrettyStr(Result.fail("删除失败，不存在该用户"));
         }
     }
 //    添加医生
