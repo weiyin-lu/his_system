@@ -14,6 +14,5 @@ import org.springframework.stereotype.Service;
  * @Created by 陈浩东
  */
 @Service
-public class MedicineServiceImpl extends ServiceImpl<MedicineMapper, Medicine>
-        implements MedicineService {
+public class MedicineServiceImpl extends ServiceImpl<MedicineMapper, Medicine> implements MedicineService {
 }

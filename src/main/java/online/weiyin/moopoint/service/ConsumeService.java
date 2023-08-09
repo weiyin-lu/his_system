@@ -15,4 +15,6 @@ import java.util.List;
 public interface ConsumeService extends IService<Consume> {
 
     List<Consume> selectCheckoutListByRecordId(int recordId);
+
+    List<Consume> selectMedicineByRecordId(int recordId);
 }

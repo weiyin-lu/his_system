@@ -4,6 +4,7 @@ import cn.hutool.json.JSONUtil;
 import online.weiyin.moopoint.entity.common.Result;
 import online.weiyin.moopoint.entity.Consume;
 import online.weiyin.moopoint.entity.Patient;
+import online.weiyin.moopoint.entity.dto.CheckOutDTO;
 import online.weiyin.moopoint.service.impl.ConsumeServiceImpl;
 import online.weiyin.moopoint.service.impl.PatientServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * @Classname NodrugCheckoutConsumeController
+ * @Classname CheckoutConsumeController
  * @Description consume医技相关
  * @Version 1.0.0
  * @Date 2023/08/09 下午 04:33
@@ -40,7 +41,12 @@ public class CheckoutConsumeController {
         List<Consume> consumes = consumeService.selectCheckoutListByRecordId(recordId);
         return JSONUtil.toJsonPrettyStr(Result.ok(consumes));
     }
-
-
+//    给出检查结果
+    @PutMapping("/")
+    @ResponseBody
+    public String updateResult(CheckOutDTO result) {
+//        待完成
+        return null;
+    }
 
 }

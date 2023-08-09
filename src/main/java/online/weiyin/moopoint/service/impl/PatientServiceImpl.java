@@ -44,7 +44,8 @@ public class PatientServiceImpl extends ServiceImpl<PatientMapper, Patient>
     }
 
     //    依赖consume表中的type信息查询patient表信息（药品）
-    public List<Patient> selectConsumeCheckoutMedicineList() {
+    @Override
+    public List<Patient> selectConsumeMedicineList() {
         QueryWrapper wrapper = QueryWrapper.create()
                 .select(PATIENT.ALL_COLUMNS)
                 .from(PATIENT)

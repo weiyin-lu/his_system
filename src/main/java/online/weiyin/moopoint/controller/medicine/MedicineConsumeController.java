@@ -31,7 +31,7 @@ public class MedicineConsumeController {
     @GetMapping("/")
     @ResponseBody
     public String getCheckoutList() {
-        List<Patient> patients = patientService.selectConsumeCheckoutMedicineList();
+        List<Patient> patients = patientService.selectConsumeMedicineList();
         return JSONUtil.toJsonPrettyStr(Result.ok(patients));
     }
     //    展示病人需要处理的详细药品信息

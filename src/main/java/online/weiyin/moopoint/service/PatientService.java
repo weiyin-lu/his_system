@@ -14,5 +14,6 @@ import java.util.List;
  */
 public interface PatientService extends IService<Patient> {
 
-    public List<Patient> selectConsumeCheckoutPatientList();
+    List<Patient> selectConsumeCheckoutPatientList();
+    List<Patient> selectConsumeMedicineList();
 }
