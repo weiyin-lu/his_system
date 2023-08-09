@@ -20,7 +20,7 @@ import static online.weiyin.moopoint.entity.table.MedicineTableDef.MEDICINE;
  * @Created by 陈浩东
  */
 @RestController
-@RequestMapping("/medicines")
+@RequestMapping("/medicines/manage")
 public class MedicineController {
 
     @Autowired

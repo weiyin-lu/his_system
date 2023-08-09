@@ -1,8 +1,10 @@
 package online.weiyin.moopoint.service.impl;
 
 import com.mybatisflex.core.query.QueryWrapper;
+import com.mybatisflex.core.util.UpdateEntity;
 import com.mybatisflex.spring.service.impl.ServiceImpl;
 import online.weiyin.moopoint.entity.Consume;
+import online.weiyin.moopoint.entity.dto.CheckOutDTO;
 import online.weiyin.moopoint.mapper.ConsumeMapper;
 import online.weiyin.moopoint.service.ConsumeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +36,7 @@ public class ConsumeServiceImpl extends ServiceImpl<ConsumeMapper, Consume> impl
         List<Consume> consumes = consumeMapper.selectListByQuery(wrapper);
         return consumes;
     }
-
+//    根据挂号记录id获取药房信息
     @Override
     public List<Consume> selectMedicineByRecordId(int recordId) {
         QueryWrapper wrapper = QueryWrapper.create()
@@ -45,6 +47,18 @@ public class ConsumeServiceImpl extends ServiceImpl<ConsumeMapper, Consume> impl
         return consumes;
     }
 
-//  根据挂号记录id获取药房信息
+//    更新检查结果（医技）
+    @Override
+    public boolean updateResultById(CheckOutDTO result) {
+//        构造一个特定值更新的对象
+//        https://mybatis-flex.com/zh/base/add-delete-update.html#%E9%83%A8%E5%88%86%E5%AD%97%E6%AE%B5%E6%9B%B4%E6%96%B0
+        Consume consume = UpdateEntity.of(Consume.class, result.getId());
+        consume.setResults(result.getResults());
+
+        int update = consumeMapper.update(consume);
+        return update > 0;
+    }
+
+
 
 }

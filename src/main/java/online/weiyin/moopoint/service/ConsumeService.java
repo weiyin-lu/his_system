@@ -2,6 +2,7 @@ package online.weiyin.moopoint.service;
 
 import com.mybatisflex.core.service.IService;
 import online.weiyin.moopoint.entity.Consume;
+import online.weiyin.moopoint.entity.dto.CheckOutDTO;
 
 import java.util.List;
 
@@ -17,4 +18,6 @@ public interface ConsumeService extends IService<Consume> {
     List<Consume> selectCheckoutListByRecordId(int recordId);
 
     List<Consume> selectMedicineByRecordId(int recordId);
+
+    boolean updateResultById(CheckOutDTO result);
 }

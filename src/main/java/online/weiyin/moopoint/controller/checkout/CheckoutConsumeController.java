@@ -45,8 +45,12 @@ public class CheckoutConsumeController {
     @PutMapping("/")
     @ResponseBody
     public String updateResult(CheckOutDTO result) {
-//        待完成
-        return null;
+        boolean b = consumeService.updateResultById(result);
+        if (b) {
+            return JSONUtil.toJsonPrettyStr(Result.success());
+        } else {
+            return JSONUtil.toJsonPrettyStr(Result.fail("操作失败"));
+        }
     }
 
 }
