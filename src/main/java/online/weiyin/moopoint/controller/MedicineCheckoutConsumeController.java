@@ -1,0 +1,45 @@
+package online.weiyin.moopoint.controller;
+
+import cn.hutool.json.JSONUtil;
+import online.weiyin.moopoint.common.Result;
+import online.weiyin.moopoint.entity.Consume;
+import online.weiyin.moopoint.entity.Patient;
+import online.weiyin.moopoint.service.impl.ConsumeServiceImpl;
+import online.weiyin.moopoint.service.impl.PatientServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+/**
+ * @Classname MedicineCheckoutConsumeController
+ * @Description consume药品相关
+ * @Version 1.0.0
+ * @Date 2023/8/9 16:35
+ * @Created by 陈浩东
+ */
+@RestController
+@RequestMapping("/checkouts")
+public class MedicineCheckoutConsumeController {
+
+    @Autowired
+    private ConsumeServiceImpl consumeService;
+    @Autowired
+    private PatientServiceImpl patientService;
+
+    //    展示有需要处理药房信息的病人概要信息
+    @GetMapping("/")
+    @ResponseBody
+    public String getCheckoutList() {
+        List<Patient> patients = patientService.selectConsumeCheckoutMedicineList();
+        return JSONUtil.toJsonPrettyStr(Result.ok(patients));
+    }
+    //    展示病人需要处理的详细药品信息
+    @GetMapping("/{recordId}")
+    @ResponseBody
+    public String getCheckoutInfo(@PathVariable int recordId) {
+        List<Consume> consumes = consumeService.selectMedicineCheckoutListByRecordId(recordId);
+        return JSONUtil.toJsonPrettyStr(Result.ok(consumes));
+    }
+
+}

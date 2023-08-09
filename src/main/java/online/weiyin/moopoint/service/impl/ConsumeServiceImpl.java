@@ -34,4 +34,14 @@ public class ConsumeServiceImpl extends ServiceImpl<ConsumeMapper, Consume> impl
         List<Consume> consumes = consumeMapper.selectListByQuery(wrapper);
         return consumes;
     }
+
+//  根据挂号记录id获取药房信息
+    public List<Consume> selectMedicineCheckoutListByRecordId(int recordId) {
+        QueryWrapper wrapper = QueryWrapper.create()
+                .where(CONSUME.RECORD_ID.eq(recordId))
+                .and(CONSUME.TYPE.eq("中药"))
+                .or(CONSUME.TYPE.eq("西药"));
+        List<Consume> consumes = consumeMapper.selectListByQuery(wrapper);
+        return consumes;
+    }
 }

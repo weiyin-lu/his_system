@@ -34,9 +34,24 @@ public class PatientServiceImpl extends ServiceImpl<PatientMapper, Patient>
         QueryWrapper wrapper = QueryWrapper.create()
                 .select(PATIENT.ALL_COLUMNS)
                 .from(PATIENT)
-                .join(CONSUME).on(PATIENT.RECORD_ID.eq(CONSUME.RECORD_ID))
+                .rightJoin(CONSUME).on(PATIENT.RECORD_ID.eq(CONSUME.RECORD_ID))
+                .groupBy(CONSUME.RECORD_ID)
                 .where(CONSUME.TYPE.eq("检查"))
                 .or(CONSUME.TYPE.eq("处置"));
+        List<Patient> patients = patientMapper.selectListByQuery(wrapper);
+
+        return patients;
+    }
+
+    //    依赖consume表中的type信息查询patient表信息（药品）
+    public List<Patient> selectConsumeCheckoutMedicineList() {
+        QueryWrapper wrapper = QueryWrapper.create()
+                .select(PATIENT.ALL_COLUMNS)
+                .from(PATIENT)
+                .rightJoin(CONSUME).on(PATIENT.RECORD_ID.eq(CONSUME.RECORD_ID))
+                .groupBy(CONSUME.RECORD_ID)
+                .where(CONSUME.TYPE.eq("中药"))
+                .or(CONSUME.TYPE.eq("西药"));
         List<Patient> patients = patientMapper.selectListByQuery(wrapper);
 
         return patients;
