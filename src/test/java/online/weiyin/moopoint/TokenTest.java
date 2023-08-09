@@ -2,8 +2,11 @@ package online.weiyin.moopoint;
 
 import cn.hutool.jwt.JWTUtil;
 import cn.hutool.jwt.JWTValidator;
+import online.weiyin.moopoint.entity.dto.DoctorDTO;
+import online.weiyin.moopoint.service.impl.DoctorServiceImpl;
 import online.weiyin.moopoint.util.TokenUtil;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 /**
@@ -16,15 +19,19 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class TokenTest {
 
+    @Autowired
+    DoctorServiceImpl doctorService;
+
     @Test
     public void createTest() {
-        String token = TokenUtil.getToken("小明");
+        DoctorDTO doctorDTO = doctorService.selectDoctorById(22);
+        String token = TokenUtil.getToken(doctorDTO);
         System.out.println(token);
     }
 
     @Test
     public void verifyTest() {
-        String token = TokenUtil.getToken("小明");
+        String token = TokenUtil.getToken(doctorService.selectDoctorById(22));
         System.out.println(token);
         System.out.println(TokenUtil.verify(token));
     }

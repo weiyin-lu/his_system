@@ -4,6 +4,7 @@ import cn.hutool.core.date.DateUtil;
 import cn.hutool.jwt.JWT;
 import cn.hutool.jwt.JWTUtil;
 import cn.hutool.jwt.JWTValidator;
+import online.weiyin.moopoint.entity.dto.DoctorDTO;
 
 import java.util.Date;
 
@@ -18,9 +19,9 @@ public class TokenUtil {
 
     private static final byte[] key = "moopoint".getBytes();
 
-    public static String getToken(String name) {
+    public static String getToken(DoctorDTO doctorInfo) {
         return JWT.create()
-                .setPayload("name",name)
+                .setPayload("info",doctorInfo)
                 .setIssuedAt(DateUtil.date()) //现在签发
                 .setExpiresAt(DateUtil.offsetHour(DateUtil.date(),1)) //有效期一小时
 //                .setExpiresAt(DateUtil.offsetMinute(DateUtil.date(),1))// 有效期一分钟，测试用

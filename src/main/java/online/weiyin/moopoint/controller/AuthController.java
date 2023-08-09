@@ -4,6 +4,7 @@ import cn.hutool.json.JSONUtil;
 import com.mybatisflex.core.query.QueryWrapper;
 import online.weiyin.moopoint.common.Result;
 import online.weiyin.moopoint.entity.Doctor;
+import online.weiyin.moopoint.entity.dto.DoctorDTO;
 import online.weiyin.moopoint.entity.dto.LoginDTO;
 import online.weiyin.moopoint.interceptor.SkipAuth;
 import online.weiyin.moopoint.service.impl.DoctorServiceImpl;
@@ -18,7 +19,7 @@ import static online.weiyin.moopoint.entity.table.DoctorTableDef.DOCTOR;
 /**
  * @Classname AuthController
  * @Description 用户登录业务
- * @Version 1.0.1
+ * @Version 1.0.2
  * @Date 2023/08/07 下午 06:27
  * @Created by 卢子昂
  */
@@ -42,8 +43,9 @@ public class AuthController {
             Doctor one = doctorService.getOne(queryWrapper);
 
             if(one != null) {
-//                如果查询结果不为空，说明登录成功，把token存到session域，返回token
-                String token = TokenUtil.getToken(one.getName());
+//                如果查询结果不为空，说明登录成功，查询一次医生基本信息，返回token
+                DoctorDTO doctorInfo = doctorService.selectDoctorById(one.getDocId());
+                String token = TokenUtil.getToken(doctorInfo);
                 request.getSession().setAttribute("token", token);
                 return JSONUtil.toJsonPrettyStr(Result.ok(token));
             } else {

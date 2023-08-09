@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * @Classname MybatisFlexConfig
  * @Description mybatis-flex配置类
- * @Version 1.0.0
+ * @Version 1.0.1
  * @Date 2023/08/06 下午 04:43
  * @Created by 卢子昂
  */
