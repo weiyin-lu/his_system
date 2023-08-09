@@ -69,18 +69,9 @@ public class DoctorController {
             return JSONUtil.toJsonPrettyStr(Result.fail("修改失败"));
         }
     }
-//    模糊查询
-    @PostMapping("/")
-    @ResponseBody
-    public String searchDoctorByCondi(@RequestBody Map<String,Object> condition) {
-
-        condition.values().removeAll(Collections.singleton(""));
-
-        List<Doctor> doctorList = doctorService.listByMap(condition);
-        return JSONUtil.toJsonPrettyStr(Result.ok(doctorList));
-    }
 
 //    查询有效用户
+//    用新的查询方式代替，故弃用
     @Deprecated
     @ResponseBody
     public String getDoctorsList() {
@@ -89,5 +80,15 @@ public class DoctorController {
         List<Doctor> list = doctorService.list(query);
         return JSONUtil.toJsonPrettyStr(Result.ok(list));
     }
+//    模糊查询
+//    用前端方式实现,故弃用
+    @Deprecated
+    @ResponseBody
+    public String searchDoctorByCondi(@RequestBody Map<String,Object> condition) {
 
+        condition.values().removeAll(Collections.singleton(""));
+
+        List<Doctor> doctorList = doctorService.listByMap(condition);
+        return JSONUtil.toJsonPrettyStr(Result.ok(doctorList));
+    }
 }

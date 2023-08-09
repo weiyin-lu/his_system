@@ -28,41 +28,31 @@ public class DoctorServiceImpl extends ServiceImpl<DoctorMapper, Doctor>
 
     @Autowired
     DoctorMapper doctorMapper;
+
+//        根据DoctorDTO构造一个多表查询wrapper，在其他方法中添加条件以实现复用
+    QueryWrapper wrapper = QueryWrapper.create()
+            .select(DOCTOR.DOC_ID,
+                    DOCTOR.NAME,
+                    DOCTOR.USER_TYPE,
+                    DOCTOR.TITLE)
+            .select(DEPARTMENT.DEPT_NAME.as(DoctorDTO::getDeptName),
+                    DEPARTMENT.DEPT_TYPE.as(DoctorDTO::getDeptType),
+                    DEPARTMENT.DEPT_FUNC.as(DoctorDTO::getDeptFunc))
+            .select(REGISTER.REG_LEVEL.as(DoctorDTO::getRegName))
+            .from(DOCTOR)
+            .leftJoin(DEPARTMENT).on(DOCTOR.DEPT_ID.eq(DEPARTMENT.DEPT_ID))
+            .leftJoin(REGISTER).on(DOCTOR.REG_ID.eq(REGISTER.REG_ID));
+
+//    查询单条数据
     @Override
     public List<DoctorDTO> selectDoctorList() {
-//        根据DoctorDTO构造一个多表查询wrapper
-        QueryWrapper wrapper = QueryWrapper.create()
-                .select(DOCTOR.DOC_ID,
-                        DOCTOR.NAME,
-                        DOCTOR.USER_TYPE,
-                        DOCTOR.TITLE)
-                .select(DEPARTMENT.DEPT_NAME.as(DoctorDTO::getDeptName),
-                        DEPARTMENT.DEPT_TYPE.as(DoctorDTO::getDeptType),
-                        DEPARTMENT.DEPT_FUNC.as(DoctorDTO::getDeptFunc))
-                .select(REGISTER.REG_LEVEL.as(DoctorDTO::getRegName))
-                .from(DOCTOR)
-                .leftJoin(DEPARTMENT).on(DOCTOR.DEPT_ID.eq(DEPARTMENT.DEPT_ID))
-                .leftJoin(REGISTER).on(DOCTOR.REG_ID.eq(REGISTER.REG_ID));
         List<DoctorDTO> doctorDTOS = doctorMapper.selectListByQueryAs(wrapper, DoctorDTO.class);
         return doctorDTOS;
     }
-
 //    查询单条数据，此方法应当仅用于返回token信息
     @Override
     public DoctorDTO selectDoctorById(int docId) {
-        QueryWrapper wrapper = QueryWrapper.create()
-                .select(DOCTOR.DOC_ID,
-                        DOCTOR.NAME,
-                        DOCTOR.USER_TYPE,
-                        DOCTOR.TITLE)
-                .select(DEPARTMENT.DEPT_NAME.as(DoctorDTO::getDeptName),
-                        DEPARTMENT.DEPT_TYPE.as(DoctorDTO::getDeptType),
-                        DEPARTMENT.DEPT_FUNC.as(DoctorDTO::getDeptFunc))
-                .select(REGISTER.REG_LEVEL.as(DoctorDTO::getRegName))
-                .from(DOCTOR)
-                .leftJoin(DEPARTMENT).on(DOCTOR.DEPT_ID.eq(DEPARTMENT.DEPT_ID))
-                .leftJoin(REGISTER).on(DOCTOR.REG_ID.eq(REGISTER.REG_ID))
-                .where(DOCTOR.DOC_ID.eq(docId));
-        return doctorMapper.selectOneByQueryAs(wrapper, DoctorDTO.class);
+        QueryWrapper wrapper1 = wrapper.where(DOCTOR.DOC_ID.eq(docId));
+        return doctorMapper.selectOneByQueryAs(wrapper1, DoctorDTO.class);
     }
 }
