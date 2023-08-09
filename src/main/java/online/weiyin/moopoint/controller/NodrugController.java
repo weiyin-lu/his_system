@@ -12,12 +12,12 @@ import java.util.List;
 /**
  * @Classname NodrugController
  * @Description 医技管理业务，此类为CURD用途接口的最佳实践参考
- * @Version 1.0.0
+ * @Version 1.0.1
  * @Date 2023/08/09 下午 02:56
  * @Created by 卢子昂
  */
 @RestController
-@RequestMapping("/checkouts")
+@RequestMapping("/checkouts/manage")
 public class NodrugController {
 
     @Autowired
