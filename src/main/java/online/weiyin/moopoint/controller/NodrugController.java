@@ -17,7 +17,7 @@ import java.util.List;
  * @Created by 卢子昂
  */
 @RestController
-@RequestMapping("/checkout")
+@RequestMapping("/checkouts")
 public class NodrugController {
 
     @Autowired

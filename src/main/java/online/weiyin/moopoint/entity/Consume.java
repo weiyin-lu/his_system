@@ -19,28 +19,28 @@ import java.util.Date;
 @Table("consume")
 public class Consume {
     @Id(keyType = KeyType.Auto)
-    private int id;
+    private Integer id;
     @Column("receipt_id")
-    private int receiptId;
+    private Integer receiptId;
     @Column("record_id")
-    private int recordId;
+    private Integer recordId;
     @Column("cost_name")
     private String costName;
-    private float price;
+    private Float price;
     @Column("dept_id")
-    private int deptId;
-    private int charge;
-    private int execute;
-    private int number;
-    private int amount;
+    private Integer deptId;
+    private Integer charge;
+    private Integer execute;
+    private Integer number;
+    private Integer amount;
     private Date time;
-    private int payment;
-    private int takeMed;
+    private Integer payment;
+    private Integer takeMed;
     private String type;
     private String subject;
     private String aim;
     private String body;
-    private int hurry;
+    private Integer hurry;
     private String prescription;
     private String useage;
     private String consumption;

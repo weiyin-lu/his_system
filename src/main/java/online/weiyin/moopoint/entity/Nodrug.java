@@ -2,6 +2,7 @@ package online.weiyin.moopoint.entity;
 
 import com.mybatisflex.annotation.Column;
 import com.mybatisflex.annotation.Id;
+import com.mybatisflex.annotation.KeyType;
 import com.mybatisflex.annotation.Table;
 import lombok.Data;
 
@@ -13,18 +14,18 @@ import lombok.Data;
  * @Created by 卢子昂
  */
 @Data
-@Table("nodrug")
+@Table("nondrug")
 public class Nodrug {
-    @Id
-    private int id;
-    private int code;
-    private int name;
-    private int price;
-    private int standard;
+    @Id(keyType = KeyType.Auto)
+    private Integer id;
+    private String code;
+    private String name;
+    private Float price;
+    private String standard;
     @Column("dept_id")
-    private int deptId;
+    private Integer deptId;
     private String subject;
-    private int type;
+    private Integer type;
     @Column(isLogicDelete = true)
-    private int status;
+    private Integer status;
 }
