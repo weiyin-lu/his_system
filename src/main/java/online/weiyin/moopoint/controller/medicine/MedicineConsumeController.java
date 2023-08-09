@@ -4,6 +4,7 @@ import cn.hutool.json.JSONUtil;
 import online.weiyin.moopoint.entity.common.Result;
 import online.weiyin.moopoint.entity.Consume;
 import online.weiyin.moopoint.entity.Patient;
+import online.weiyin.moopoint.entity.dto.CheckOutDTO;
 import online.weiyin.moopoint.service.impl.ConsumeServiceImpl;
 import online.weiyin.moopoint.service.impl.PatientServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,19 +28,37 @@ public class MedicineConsumeController {
     @Autowired
     private PatientServiceImpl patientService;
 
-    //    展示有需要处理药房信息的病人概要信息
+//  展示有需要处理药房信息的病人概要信息
     @GetMapping("/")
     @ResponseBody
     public String getCheckoutList() {
         List<Patient> patients = patientService.selectConsumeMedicineList();
         return JSONUtil.toJsonPrettyStr(Result.ok(patients));
     }
-    //    展示病人需要处理的详细药品信息
+//  展示病人需要处理的详细药品信息
     @GetMapping("/{recordId}")
     @ResponseBody
     public String getCheckoutInfo(@PathVariable int recordId) {
         List<Consume> consumes = consumeService.selectMedicineByRecordId(recordId);
         return JSONUtil.toJsonPrettyStr(Result.ok(consumes));
+    }
+
+//  发药，必须为已付款状态才能开始发药
+//  两个关于consume判定是否付款进行操作的代码完全一样，是否可以优化
+    @GetMapping("/start/{id}")
+    @ResponseBody
+    public String startCheckout(@PathVariable int id) {
+        boolean b = consumeService.checkPayment(id);
+        if (b) {
+            boolean b1 = consumeService.updateExecute(id);
+            if (b1) {
+                return JSONUtil.toJsonPrettyStr(Result.success());
+            } else {
+                return JSONUtil.toJsonPrettyStr(Result.fail("操作失败"));
+            }
+        } else {
+            return JSONUtil.toJsonPrettyStr(Result.fail("未付款"));
+        }
     }
 
 }
