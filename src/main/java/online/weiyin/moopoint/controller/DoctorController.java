@@ -27,7 +27,7 @@ import static online.weiyin.moopoint.entity.table.DoctorTableDef.DOCTOR;
 public class DoctorController {
     @Autowired
     DoctorServiceImpl doctorService;
-//    查询医生的基本信息
+//    查询有效医生的基本信息
     @GetMapping("/")
     @ResponseBody
     public String getDoctorsInfo() {
@@ -35,10 +35,10 @@ public class DoctorController {
         return JSONUtil.toJsonPrettyStr(Result.ok(list));
     }
 
-//    逻辑删除用户
+//    逻辑删除医生
     @DeleteMapping("/{id}")
     @ResponseBody
-    public String removeDoctor(@PathVariable int id) {
+    public String removeDoctorById(@PathVariable int id) {
         boolean b = doctorService.removeById(id);
         if (b) {
             return JSONUtil.toJsonPrettyStr(Result.success());
@@ -47,7 +47,7 @@ public class DoctorController {
                     .fail("删除失败，不存在该用户"));
         }
     }
-//    添加用户
+//    添加医生
     @PutMapping("/add")
     @ResponseBody
     public String addDoctor(@RequestBody Doctor doctor) {
@@ -58,7 +58,7 @@ public class DoctorController {
             return JSONUtil.toJsonPrettyStr(Result.fail("添加失败"));
         }
     }
-//    修改用户
+//    修改医生信息
     @PutMapping("/update")
     @ResponseBody
     public String updateDoctor(@RequestBody Doctor doctor) {
@@ -69,18 +69,9 @@ public class DoctorController {
             return JSONUtil.toJsonPrettyStr(Result.fail("修改失败"));
         }
     }
-//    模糊查询
-    @PostMapping("/")
-    @ResponseBody
-    public String searchDoctorByCondi(@RequestBody Map<String,Object> condition) {
-
-        condition.values().removeAll(Collections.singleton(""));
-
-        List<Doctor> doctorList = doctorService.listByMap(condition);
-        return JSONUtil.toJsonPrettyStr(Result.ok(doctorList));
-    }
 
 //    查询有效用户
+//    用新的查询方式代替，故弃用
     @Deprecated
     @ResponseBody
     public String getDoctorsList() {
@@ -89,5 +80,15 @@ public class DoctorController {
         List<Doctor> list = doctorService.list(query);
         return JSONUtil.toJsonPrettyStr(Result.ok(list));
     }
+//    模糊查询
+//    用前端方式实现,故弃用
+    @Deprecated
+    @ResponseBody
+    public String searchDoctorByCondi(@RequestBody Map<String,Object> condition) {
 
+        condition.values().removeAll(Collections.singleton(""));
+
+        List<Doctor> doctorList = doctorService.listByMap(condition);
+        return JSONUtil.toJsonPrettyStr(Result.ok(doctorList));
+    }
 }

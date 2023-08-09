@@ -37,7 +37,7 @@ public class RegisterController {
 //  逻辑删除挂号级别
     @DeleteMapping("/{id}")
     @ResponseBody
-    public String removeRegister(@PathVariable int id) {
+    public String removeRegisterById(@PathVariable int id) {
         boolean remove = registerService.removeById(id);
         if (remove) {
             return JSONUtil.toJsonPrettyStr(Result.success());

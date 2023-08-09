@@ -40,10 +40,10 @@ public class DeptController {
         return JSONUtil.toJsonPrettyStr(Result.ok(list));
     }
 
-//  根据条件查找对应科室
+//  根据组合条件查找科室
     @PostMapping("/")
     @ResponseBody
-    public String getDeptByChooseList(@RequestBody Map<String,Object> map) {
+    public String searchDeptByCondition(@RequestBody Map<String,Object> map) {
 
 //      去除键值为空字符串的键
         map.values().removeAll(Collections.singleton(""));
@@ -55,11 +55,10 @@ public class DeptController {
         return JSONUtil.toJsonPrettyStr(Result.ok(list));
     }
 
-//  根据传入的id删除对应科室
+//  逻辑删除科室
     @DeleteMapping("/{id}")
     @ResponseBody
     public String removeDeptById(@PathVariable int id) {
-
         boolean remove = departmentService.removeById(id);
         if (remove) {
             return JSONUtil.toJsonPrettyStr(Result.success());
@@ -73,7 +72,6 @@ public class DeptController {
     @PostMapping("/add")
     @ResponseBody
     public String addDept(@RequestBody Department department) {
-        System.out.println(department);
         boolean save = departmentService.save(department);
         if (save) {
             return JSONUtil.toJsonPrettyStr(Result.success());
@@ -89,7 +87,7 @@ public class DeptController {
         if (update) {
             return JSONUtil.toJsonPrettyStr(Result.success());
         } else {
-            return JSONUtil.toJsonPrettyStr(Result.fail("添加失败"));
+            return JSONUtil.toJsonPrettyStr(Result.fail("修改失败"));
         }
     }
 

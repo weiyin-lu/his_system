@@ -35,10 +35,10 @@ public class PatientController {
         return JSONUtil.toJsonPrettyStr(Result.ok(list));
     }
 
-//  根据指定条件查询挂号信息
+//  根据组合条件查询挂号信息
     @PostMapping("/")
     @ResponseBody
-    public String searchPatientByCondi(@RequestParam Map<String,Object> condition) {
+    public String searchPatientByCondition(@RequestParam Map<String,Object> condition) {
 
         condition.values().removeAll(Collections.singleton(""));
         List<Patient> patients = patientService.listByMap(condition);
@@ -64,7 +64,7 @@ public class PatientController {
     //    退号
     @GetMapping("/unpay/{id}")
     @ResponseBody
-    public String uppay(@PathVariable Integer id) {
+    public String unpay(@PathVariable Integer id) {
 //        查找退号目标，如果不是就诊中，即可退号
 //        操作逻辑是，如果病人看诊了之后也不满意，可以退号，需要门诊医生主动结束就诊状态
         Patient byId = patientService.getById(id);
@@ -81,7 +81,7 @@ public class PatientController {
         }
     }
 
-//    挂号或修改
+//    挂号或修改挂号信息
 //    首次挂号时主键自动递增，修改时应当传入主键，否则会创建一条新的数据
     @PutMapping("/")
     @ResponseBody
