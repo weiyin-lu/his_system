@@ -194,6 +194,14 @@ arg:    Medrecord - 问诊信息对象，更新必须传入主键，且必须传
 des:    添加或更新指定病人的问诊信息
 return: 无
 ```
+### 药房/医技处置业务
+```
+url:    /outdoctors/consume
+method: PUT
+arg:    Consume - 待写入类对象
+des:    插入一条处置结果，根据调用源不同给出不同结果
+return: 无
+```
 ### 诊断结果业务
 ```
 url:    /ill/

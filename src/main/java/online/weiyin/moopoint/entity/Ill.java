@@ -27,5 +27,5 @@ public class Ill {
     @Column(isLogicDelete = true)
     private Integer status;
     @Column("ill_kind")
-    private  Integer illKind;
+    private Integer illKind;
 }

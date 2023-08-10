@@ -1,5 +1,6 @@
 package online.weiyin.moopoint.controller.outdoctor;
 
+import cn.hutool.core.date.DateUtil;
 import cn.hutool.json.JSONUtil;
 import online.weiyin.moopoint.entity.Consume;
 import online.weiyin.moopoint.entity.common.Result;
@@ -17,24 +18,28 @@ import java.util.Date;
  * @Created by 陈浩东
  */
 @RestController
-@RequestMapping("/doctors/consume")
+@RequestMapping("/outdoctors/consume")
 public class DoctorConsumeController {
     @Autowired
     private ConsumeServiceImpl consumeService;
 
-//  医生选择药品发到患者要支付的订单表
-//  set的是不为空但用户不穿的数据
-//  也可以作为医生选择检查发到患者订单表的方法
+//    门诊医生创建consume订单
+//    同时用于药房和医技
     @PutMapping("/choose")
     @ResponseBody
     public String doctorChoose(@RequestBody Consume consume) {
-        consume.setCharge(1);
-        consume.setTime(new Date());
-        boolean b = consumeService.saveOrUpdate(consume);
-        if (b) {
-            return JSONUtil.toJsonPrettyStr(Result.success());
-        } else {
-            return JSONUtil.toJsonPrettyStr(Result.fail("操作失败"));
+//        形参非常依赖record_id，是核心筛选项，必填
+//        固定创建时间
+        consume.setTime(DateUtil.date());
+        try {
+            boolean b = consumeService.saveOrUpdate(consume);
+            if (b) {
+                return JSONUtil.toJsonPrettyStr(Result.success());
+            } else {
+                return JSONUtil.toJsonPrettyStr(Result.fail("更新失败"));
+            }
+        } catch(Exception e) {
+            return JSONUtil.toJsonPrettyStr(Result.error(e.getMessage()));
         }
     }
 
