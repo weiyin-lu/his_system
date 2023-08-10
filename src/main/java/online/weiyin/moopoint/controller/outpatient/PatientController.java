@@ -2,8 +2,11 @@ package online.weiyin.moopoint.controller.outpatient;
 
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.json.JSONUtil;
+import com.mybatisflex.core.query.QueryWrapper;
+import online.weiyin.moopoint.entity.Consume;
 import online.weiyin.moopoint.entity.common.Result;
 import online.weiyin.moopoint.entity.Patient;
+import online.weiyin.moopoint.service.impl.ConsumeServiceImpl;
 import online.weiyin.moopoint.service.impl.PatientServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+
+import static online.weiyin.moopoint.entity.table.ConsumeTableDef.CONSUME;
 
 /**
  * @Classname PatientController
@@ -45,7 +50,8 @@ public class PatientController {
         return JSONUtil.toJsonPrettyStr(Result.ok(patients));
     }
 
-//    支付费用
+
+//    支付挂号费用
     @GetMapping("/pay/{id}")
     @ResponseBody
     public String pay(@PathVariable Integer id) {
@@ -61,7 +67,7 @@ public class PatientController {
         }
     }
 
-    //    退号
+//    退号
     @GetMapping("/unpay/{id}")
     @ResponseBody
     public String unpay(@PathVariable Integer id) {

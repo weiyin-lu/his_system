@@ -57,6 +57,24 @@ public class CheckoutConsumeController {
             return JSONUtil.toJsonPrettyStr(Result.fail("未付款"));
         }
     }
+//    取消处置
+    @GetMapping("/back/{id}")
+    @ResponseBody
+    public String backCheckout(@PathVariable int id) {
+        boolean b = consumeService.checkPayment(id);
+        if (b) {
+            boolean b1 = consumeService.updateExecute(id,0);
+//          退药标记
+            boolean b2 = consumeService.updateTakeMed(1);
+            if (b1 && b2) {
+                return JSONUtil.toJsonPrettyStr(Result.success());
+            } else {
+                return JSONUtil.toJsonPrettyStr(Result.fail("操作失败"));
+            }
+        } else {
+            return JSONUtil.toJsonPrettyStr(Result.fail("未付款"));
+        }
+    }
 //    给出检查结果,执行状态必须为1
     @PutMapping("/")
     @ResponseBody

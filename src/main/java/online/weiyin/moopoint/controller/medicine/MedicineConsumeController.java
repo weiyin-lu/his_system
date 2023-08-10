@@ -64,7 +64,7 @@ public class MedicineConsumeController {
 //  退药
     @GetMapping("/back/{id}")
     @ResponseBody
-    public String backCheckout(@PathVariable int id) {
+    public String backMedicine(@PathVariable int id) {
         boolean b = consumeService.checkPayment(id);
         if (b) {
             boolean b1 = consumeService.updateExecute(id,0);

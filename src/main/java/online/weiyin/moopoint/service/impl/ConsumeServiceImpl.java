@@ -68,6 +68,26 @@ public class ConsumeServiceImpl extends ServiceImpl<ConsumeMapper, Consume> impl
         return payment.getPayment() == 1;
     }
 
+//    检查退费状态
+    @Override
+    public boolean checkTakeMed(int id) {
+        QueryWrapper wrapper = QueryWrapper.create()
+                .select(CONSUME.TAKE_MED)
+                .where(CONSUME.ID.eq(id));
+        Consume payment = consumeMapper.selectOneByQuery(wrapper);
+        return payment.getTakeMed() == 1;
+    }
+
+//    更新支付状态，直接更新为已支付
+    @Override
+    public boolean updatePayment(int id) {
+        Consume consume = UpdateEntity.of(Consume.class, id);
+        consume.setPayment(1);
+
+        int update = consumeMapper.update(consume);
+        return update > 0;
+    }
+
 //    更新执行状态
     @Override
     public boolean updateExecute(int id,int execute) {
@@ -78,6 +98,7 @@ public class ConsumeServiceImpl extends ServiceImpl<ConsumeMapper, Consume> impl
         return update > 0;
     }
 
+//    更新退费状态，直接改为需退费(1)
     @Override
     public boolean updateTakeMed(int id) {
         Consume consume = UpdateEntity.of(Consume.class, id);
@@ -86,6 +107,5 @@ public class ConsumeServiceImpl extends ServiceImpl<ConsumeMapper, Consume> impl
         int update = consumeMapper.update(consume);
         return update > 0;
     }
-
 
 }
