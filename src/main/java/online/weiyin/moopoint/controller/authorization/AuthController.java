@@ -31,7 +31,7 @@ public class AuthController {
     @PostMapping("/")
     @ResponseBody
     @SkipAuth //不受拦截器限制
-    public String login(@RequestBody LoginDTO login, HttpServletRequest request) {
+    public String login(@RequestBody LoginDTO login) {
 
         System.out.println("login run");
         System.out.println(login);
@@ -43,19 +43,16 @@ public class AuthController {
             Doctor one = doctorService.getOne(queryWrapper);
 
             if(one != null) {
-//                如果查询结果不为空，说明登录成功，查询一次医生基本信息，返回token
+//                如果查询结果不为空，说明登录成功，查询一次医生基本信息，作为token依赖，返回token
                 DoctorDTO doctorInfo = doctorService.selectDoctorById(one.getDocId());
                 String token = TokenUtil.getToken(doctorInfo);
-                request.getSession().setAttribute("token", token);
                 return JSONUtil.toJsonPrettyStr(Result.ok(token));
             } else {
-//                如果为空，说明登录流程失败,清空域里的token
-                request.getSession().setAttribute("token", null);
+//                如果为空，说明登录流程失败,
                 return JSONUtil.toJsonPrettyStr(Result.fail("账号或密码错误"));
             }
         } catch (Exception e) {
 //            出错返回相关数据
-            request.getSession().setAttribute("token", null);
             return JSONUtil.toJsonPrettyStr(Result.error(e.getMessage()));
         }
     }
