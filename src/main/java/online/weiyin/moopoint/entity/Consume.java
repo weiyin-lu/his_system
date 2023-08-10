@@ -46,4 +46,5 @@ public class Consume {
     private String consumption;
     private String frequency;
     private String results;
+
 }

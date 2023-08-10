@@ -172,6 +172,13 @@ arg:    int - 当前门诊医生的doc_id
 des:    根据医生ID获取挂此医生号的病人挂号信息
 return: List<Patient> - 有效挂号患者信息列表
 ```
+```
+url:    /outdoctors/patient/completed/{id}
+method: GET
+arg:    int - patient表的主键id
+des:    结束诊断，将state转换为结诊
+return: 无
+```
 ### 问诊登记业务
 ```
 url:    /outdoctors/{recordId}
@@ -186,6 +193,14 @@ method: POST
 arg:    Medrecord - 问诊信息对象，更新必须传入主键，且必须传入record_id
 des:    添加或更新指定病人的问诊信息
 return: 无
+```
+### 诊断结果业务
+```
+url:    /ill/
+method: GET
+arg:    无
+des:    查询所有有效的诊断结果列表
+return: List<Ill> - 诊断结果信息
 ```
 ## 门诊医技工作站
 ### 医技管理业务

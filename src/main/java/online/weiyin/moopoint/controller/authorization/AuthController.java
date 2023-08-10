@@ -56,4 +56,5 @@ public class AuthController {
             return JSONUtil.toJsonPrettyStr(Result.error(e.getMessage()));
         }
     }
+
 }

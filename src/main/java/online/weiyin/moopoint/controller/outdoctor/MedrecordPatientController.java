@@ -35,4 +35,20 @@ public class MedrecordPatientController {
         List<Patient> list = patientService.list(wrapper);
         return JSONUtil.toJsonPrettyStr(Result.ok(list));
     }
+
+//    结诊
+    @GetMapping("/completed/{id}")
+    @ResponseBody
+    public String complete(int id) {
+        Patient patient = new Patient();
+        patient.setState("结诊");
+        patient.setId(id);
+        boolean b = patientService.updateById(patient);
+        if (b) {
+            return JSONUtil.toJsonPrettyStr(Result.success());
+        } else {
+            return JSONUtil.toJsonPrettyStr(Result.fail("操作失败"));
+        }
+
+    }
 }
