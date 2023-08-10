@@ -48,7 +48,7 @@ public class AuthController {
                 String token = TokenUtil.getToken(doctorInfo);
                 return JSONUtil.toJsonPrettyStr(Result.ok(token));
             } else {
-//                如果为空，说明登录流程失败,
+//                如果为空，说明登录流程失败
                 return JSONUtil.toJsonPrettyStr(Result.fail("账号或密码错误"));
             }
         } catch (Exception e) {

@@ -34,7 +34,9 @@ public class DoctorServiceImpl extends ServiceImpl<DoctorMapper, Doctor>
             .select(DOCTOR.DOC_ID,
                     DOCTOR.NAME,
                     DOCTOR.USER_TYPE,
-                    DOCTOR.TITLE)
+                    DOCTOR.TITLE,
+                    DOCTOR.DEPT_ID,
+                    DOCTOR.REG_ID)
             .select(DEPARTMENT.DEPT_NAME.as(DoctorDTO::getDeptName),
                     DEPARTMENT.DEPT_TYPE.as(DoctorDTO::getDeptType),
                     DEPARTMENT.DEPT_FUNC.as(DoctorDTO::getDeptFunc))

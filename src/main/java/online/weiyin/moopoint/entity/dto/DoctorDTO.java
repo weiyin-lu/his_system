@@ -24,6 +24,10 @@ public class DoctorDTO {
     @Column("user_type")
     private String userType;
     private String title;
+    @Column("dept_id")
+    private Integer deptId;
+    @Column("reg_id")
+    private Integer regId;
 //    以下是其他实体中的对象
     private String deptName;
     private String deptType;
