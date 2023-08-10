@@ -29,6 +29,6 @@ return: List<DoctorDTO> - 医生信息结果集
 url:    /doctors/{id}
 method: DELETE
 arg:    int - doctor表待删除医生的主键id
-des:    逻辑删除某用户
+des:    逻辑删除某医生的信息
 return: 无
 ```
