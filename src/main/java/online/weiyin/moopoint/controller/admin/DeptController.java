@@ -41,7 +41,8 @@ public class DeptController {
     }
 
 //  根据组合条件查找科室
-    @PostMapping("/")
+//  用前端方式实现,故弃用
+    @Deprecated
     @ResponseBody
     public String searchDeptByCondition(@RequestBody Map<String,Object> map) {
 
@@ -69,7 +70,8 @@ public class DeptController {
 
 
 //  添加科室
-    @PostMapping("/add")
+//  原是Post修改为Put，前段有一处使用Post记得修改
+    @PutMapping("/add")
     @ResponseBody
     public String addDept(@RequestBody Department department) {
         boolean save = departmentService.save(department);
