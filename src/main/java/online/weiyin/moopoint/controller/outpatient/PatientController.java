@@ -50,7 +50,6 @@ public class PatientController {
         return JSONUtil.toJsonPrettyStr(Result.ok(patients));
     }
 
-
 //    支付挂号费用
     @GetMapping("/pay/{id}")
     @ResponseBody

@@ -172,6 +172,13 @@ arg:    int - 当前门诊医生的doc_id
 des:    根据医生ID获取挂此医生号的病人挂号信息
 return: List<Patient> - 有效挂号患者信息列表
 ```
+```
+url:    /outdoctors/patient/completed/{id}
+method: GET
+arg:    int - patient表的主键id
+des:    结束诊断，将state转换为结诊
+return: 无
+```
 ### 问诊登记业务
 ```
 url:    /outdoctors/{recordId}
