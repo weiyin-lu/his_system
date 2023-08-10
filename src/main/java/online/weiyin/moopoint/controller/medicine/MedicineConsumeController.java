@@ -10,6 +10,7 @@ import online.weiyin.moopoint.service.impl.PatientServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -35,6 +36,7 @@ public class MedicineConsumeController {
         List<Patient> patients = patientService.selectConsumeMedicineList();
         return JSONUtil.toJsonPrettyStr(Result.ok(patients));
     }
+
 //  展示病人需要处理的详细药品信息
     @GetMapping("/{recordId}")
     @ResponseBody
@@ -79,6 +81,5 @@ public class MedicineConsumeController {
             return JSONUtil.toJsonPrettyStr(Result.fail("未付款"));
         }
     }
-
 
 }

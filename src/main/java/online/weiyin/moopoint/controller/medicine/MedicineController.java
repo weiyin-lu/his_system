@@ -26,6 +26,7 @@ public class MedicineController {
     @Autowired
     MedicineServiceImpl medicineService;
 
+//  查询所有有效药品列表
     @GetMapping("/")
     @ResponseBody
     public String getMedicinesList() {
@@ -36,7 +37,7 @@ public class MedicineController {
         return JSONUtil.toJsonPrettyStr(Result.ok(list));
     }
 
-    //  根据传入的id删除对应科室
+//  根据传入的id删除对应药品
     @DeleteMapping("/{id}")
     @ResponseBody
     public String removeMedicineById(@PathVariable int id) {
