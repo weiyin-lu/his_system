@@ -43,7 +43,7 @@ public class DoctorServiceImpl extends ServiceImpl<DoctorMapper, Doctor>
             .leftJoin(DEPARTMENT).on(DOCTOR.DEPT_ID.eq(DEPARTMENT.DEPT_ID))
             .leftJoin(REGISTER).on(DOCTOR.REG_ID.eq(REGISTER.REG_ID));
 
-//    查询单条数据
+//    查询所有数据
     @Override
     public List<DoctorDTO> selectDoctorList() {
         List<DoctorDTO> doctorDTOS = doctorMapper.selectListByQueryAs(wrapper, DoctorDTO.class);
