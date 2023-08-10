@@ -33,6 +33,6 @@ public class MedrecordPatientController {
         QueryWrapper wrapper = QueryWrapper.create()
                 .where(PATIENT.DOC_ID.eq(docId));
         List<Patient> list = patientService.list(wrapper);
-        return JSONUtil.toJsonStr(Result.ok(list));
+        return JSONUtil.toJsonPrettyStr(Result.ok(list));
     }
 }

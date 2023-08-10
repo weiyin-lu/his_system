@@ -46,36 +46,36 @@ arg:    Doctor - doctor表实体类要修改的数据
 des:    修改某用户
 return: 无
 ```
-###科室管理
+### 科室管理
 ```
-url:    /dept/
+url:    /depts/
 method: GET
 arg:    无
 des:    查询未逻辑删除的科室的基本信息
 return: List<Department> - 科室信息结果集
 ```
 ```
-url:    /dept/{id}
+url:    /depts/{id}
 method: DELETE
 arg:    int - dept表待删除科室的主键id
 des:    逻辑删除某科室
 return: 无
 ```
 ```
-url:    /dept/add
+url:    /depts/add
 method: PUT
 arg:    Department - dept表实体类要添加的数据
 des:    添加某科室
 return: 无
 ```
 ```
-url:    /dept/update
+url:    /depts/update
 method: PUT
 arg:    Department - dept表实体类要修改的数据
 des:    修改某科室
 return: 无
 ```
-###挂号级别管理
+### 挂号级别管理
 ```
 url:    /registers/
 method: GET
@@ -104,8 +104,8 @@ arg:    Register - register表实体类要修改的数据
 des:    修改某挂号级别
 return: 无
 ```
-##门诊挂号收费
-###挂号管理业务
+## 门诊挂号收费
+### 挂号管理业务
 ```
 url:    /patients/
 method: GET
@@ -121,6 +121,13 @@ des:    支付挂号费用
 return: 无
 ```
 ```
+url:    /patients/
+method: POST
+arg:    Map<String,Object>
+des:    根据组合条件查询挂号信息
+return: List<Patient> - 查询结果集
+```
+```
 url:    /patients/unpay/{id}
 method: GET
 arg:    Integer - patient表待退号的主键id
@@ -130,13 +137,13 @@ return: 无
 ```
 url:    /patients/
 method: PUT
-arg:    Patient - patient表实体类要添加的数据
+arg:    Patient - patient表实体类要添加或者的数据，修改必须含有主键
 des:    挂号或修改挂号信息
 return: 无
 ```
-###挂号二级付退费业务（consume相关）
+### 药房/医技相关付退费业务
 ```
-url:    /patients/consume/
+url:    /patients/consume/{recordId}
 method: GET
 arg:    int - consume表要查询的信息的record_id
 des:    查询挂号信息下的处方处置信息
@@ -156,8 +163,32 @@ arg:    int - consume表待退费的主键id
 des:    退费（必须有医技/药房医生操作退药/退处置后才能退费）
 return: List<Consume> - 挂号级别信息结果集
 ```
-##门诊医技工作站
-###医技管理业务
+## 门诊医生工作站
+### 患者选择业务
+```
+url:    /outdoctors/patient/{docId}
+method: GET
+arg:    int - 当前门诊医生的doc_id
+des:    根据医生ID获取挂此医生号的病人挂号信息
+return: List<Patient> - 有效挂号患者信息列表
+```
+### 问诊登记业务
+```
+url:    /outdoctors/{recordId}
+method: GET
+arg:    int - medrecord表的record_id
+des:    查询指定病人的问诊信息，查询结果允许为null
+return: List<Consume> - 挂号级别信息结果集
+```
+```
+url:    /outdoctors/
+method: POST
+arg:    Medrecord - 问诊信息对象，更新必须传入主键，且必须传入record_id
+des:    添加或更新指定病人的问诊信息
+return: 无
+```
+## 门诊医技工作站
+### 医技管理业务
 ```
 url:    /checkouts/manage/
 method: GET
@@ -168,7 +199,7 @@ return: List<Nodrug> - 医技列表信息结果集
 ```
 url:    /checkouts/manage/
 method: PUT
-arg:    Nodrug - nodrug表实体类要添加或修改的数据
+arg:    Nodrug - nodrug表实体类要添加或修改的数据，修改必须提供主键
 des:    添加或修改医技信息
 return: 无
 ```
@@ -179,7 +210,7 @@ arg:    int - nodrug表待删除医技信息的主键id
 des:    逻辑删除医技信息
 return: 无
 ```
-###consume医技相关
+### 医技处置业务
 ```
 url:    /checkouts/
 method: GET
@@ -212,11 +243,11 @@ return: 无
 url:    /checkouts/
 method: PUT
 arg:    CheckOutDTO - 检查结果的DTO类
-des:    给出检查结果,执行状态必须为1
+des:    给出检查结果,执行状态必须为1才可录入
 return: 无
 ```
-##门诊药房工作站
-###药品管理业务
+## 门诊药房工作站
+### 药品管理业务
 ```
 url:    /medicines/manage/
 method: GET
@@ -227,7 +258,7 @@ return: List<Medicine> - 药品信息结果集
 ```
 url:    /medicines/manage/
 method: PUT
-arg:    Medicine - medicine表实体类要添加或修改的数据
+arg:    Medicine - medicine表实体类要添加或修改的数据，更新必须传入主键
 des:    添加或修改药品信息
 return: 无
 ```
@@ -238,7 +269,7 @@ arg:    int - medicine表待删除药品信息的主键id
 des:    逻辑删除药品信息
 return: 无
 ```
-###consume药品相关
+### 药房开药业务
 ```
 url:    /medicines/
 method: GET

@@ -23,7 +23,7 @@ import static online.weiyin.moopoint.entity.table.DepartmentTableDef.DEPARTMENT;
  * @Created by 陈浩东
  */
 @RestController
-@RequestMapping("/dept")
+@RequestMapping("/depts")
 public class DeptController {
     @Autowired
     DepartmentServiceImpl departmentService;
@@ -37,22 +37,6 @@ public class DeptController {
                 .where(DEPARTMENT.STATUS.eq(1));
         List<Department> list = departmentService.list(query);
         System.out.println(list);
-        return JSONUtil.toJsonPrettyStr(Result.ok(list));
-    }
-
-//  根据组合条件查找科室
-//  用前端方式实现,故弃用
-    @Deprecated
-    @ResponseBody
-    public String searchDeptByCondition(@RequestBody Map<String,Object> map) {
-
-//      去除键值为空字符串的键
-        map.values().removeAll(Collections.singleton(""));
-
-//        遍历找出null和空字符串删除键
-//        map.entrySet().removeIf(entry -> entry.getValue() == null && entry.getValue() == "");
-
-        List<Department> list = departmentService.listByMap(map);
         return JSONUtil.toJsonPrettyStr(Result.ok(list));
     }
 
@@ -93,4 +77,19 @@ public class DeptController {
         }
     }
 
+//  根据组合条件查找科室
+//  用前端方式实现,故弃用
+    @Deprecated
+    @ResponseBody
+    public String searchDeptByCondition(@RequestBody Map<String,Object> map) {
+
+//      去除键值为空字符串的键
+        map.values().removeAll(Collections.singleton(""));
+
+//        遍历找出null和空字符串删除键
+//        map.entrySet().removeIf(entry -> entry.getValue() == null && entry.getValue() == "");
+
+        List<Department> list = departmentService.listByMap(map);
+        return JSONUtil.toJsonPrettyStr(Result.ok(list));
+    }
 }
