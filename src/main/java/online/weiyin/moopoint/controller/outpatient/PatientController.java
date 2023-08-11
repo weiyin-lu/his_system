@@ -24,7 +24,8 @@ import static online.weiyin.moopoint.entity.table.ConsumeTableDef.CONSUME;
  * @Date 2023/8/7 18:18
  * @Created by 陈浩东
  */
-//  需要细化此接口 卢子昂_2023.08.07_20:34
+// 需要细化此接口 卢子昂_2023.08.07_20:34
+// 细化完成 卢子昂_2023-08-11_19:55
 @RestController
 @RequestMapping("/patients")
 public class PatientController {
