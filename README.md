@@ -22,6 +22,13 @@ arg:    LoginDTO - 账号密码的DTO对象
 des:    登录检查，账号密码正确可通过
 return: String - 携带账户基本信息的token
 ```
+```
+url:    /auth/
+method: PUT
+arg:    String - token字符串
+des:    获取token负载信息
+return: DoctorDTO - 实际上是String，但内容与DoctorDTO相同，通过token解析而来
+```
 ## 基本信息维护
 ### 医生管理
 ```

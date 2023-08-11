@@ -56,5 +56,11 @@ public class AuthController {
             return JSONUtil.toJsonPrettyStr(Result.error(e.getMessage()));
         }
     }
-
+//    解析token
+    @PutMapping("/")
+    @ResponseBody
+    public String parse(@RequestBody String token) {
+        Result<Object> ok = Result.ok(TokenUtil.parseToken(token));
+        return JSONUtil.toJsonPrettyStr(ok);
+    }
 }

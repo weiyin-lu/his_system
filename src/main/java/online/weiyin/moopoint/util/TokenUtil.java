@@ -3,10 +3,7 @@ package online.weiyin.moopoint.util;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.jwt.JWT;
 import cn.hutool.jwt.JWTUtil;
-import cn.hutool.jwt.JWTValidator;
 import online.weiyin.moopoint.entity.dto.DoctorDTO;
-
-import java.util.Date;
 
 /**
  * @Classname TokenUtil
@@ -18,7 +15,7 @@ import java.util.Date;
 public class TokenUtil {
 
     private static final byte[] key = "moopoint".getBytes();
-
+//    创建token
     public static String getToken(DoctorDTO doctorInfo) {
         return JWT.create()
                 .setPayload("info",doctorInfo)
@@ -28,9 +25,13 @@ public class TokenUtil {
                 .setKey(key)
                 .sign();
     }
-
+//    验证token
     public static boolean verify(String token) {
         return JWT.of(token).setKey(key).validate(0);
     }
-
+//    解析token
+    public static Object parseToken(String token) {
+        JWT jwt = JWTUtil.parseToken(token);
+        return jwt.getPayload("info");
+    }
 }

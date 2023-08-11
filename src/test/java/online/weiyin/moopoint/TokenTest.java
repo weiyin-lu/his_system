@@ -19,20 +19,4 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class TokenTest {
 
-    @Autowired
-    DoctorServiceImpl doctorService;
-
-    @Test
-    public void createTest() {
-        DoctorDTO doctorDTO = doctorService.selectDoctorById(22);
-        String token = TokenUtil.getToken(doctorDTO);
-        System.out.println(token);
-    }
-
-    @Test
-    public void verifyTest() {
-        String token = TokenUtil.getToken(doctorService.selectDoctorById(22));
-        System.out.println(token);
-        System.out.println(TokenUtil.verify(token));
-    }
 }

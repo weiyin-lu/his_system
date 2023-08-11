@@ -30,4 +30,7 @@ public class IllController {
         List<Ill> list = illService.list();
         return JSONUtil.toJsonPrettyStr(Result.ok(list));
     }
+
+//    按主键条件查询诊断结果
+    
 }
