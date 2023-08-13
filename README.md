@@ -59,6 +59,13 @@ arg:    Doctor - doctor表实体类要修改的数据
 des:    修改某用户
 return: 无
 ```
+```
+url:    /doctors/searchByCondi
+method: POST
+arg:    Map<String,Object> - 模糊查询需要的键值对数据
+des:    根据组合条件模糊查询
+return: List<Doctor> - 查询结果集
+```
 ### 科室管理
 ```
 url:    /depts/

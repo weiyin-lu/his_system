@@ -81,7 +81,7 @@ public class DoctorController {
     }
 //    模糊查询
 //    用前端方式实现,故弃用
-    @Deprecated
+    @PostMapping("/searchByCondi")
     @ResponseBody
     public String searchDoctorByCondi(@RequestBody Map<String,Object> condition) {
 

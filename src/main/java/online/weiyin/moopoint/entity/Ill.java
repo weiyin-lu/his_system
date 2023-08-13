@@ -20,8 +20,8 @@ public class Ill {
     private String illId;
     @Column("ill_name")
     private String illName;
-    @Column("IDC_code")
-    private String idcCode;
+    @Column("ICD_code")
+    private String icdCode;
     @Column("ill_type")
     private String illType;
     @Column(isLogicDelete = true)
