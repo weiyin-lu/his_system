@@ -25,12 +25,16 @@ public class DoctorConsumeController {
 
 //    门诊医生创建consume订单
 //    同时用于药房和医技
-    @PutMapping("/choose")
+    @PutMapping("/")
     @ResponseBody
     public String doctorChoose(@RequestBody Consume consume) {
 //        形参非常依赖record_id，是核心筛选项，必填
 //        固定创建时间
         consume.setTime(DateUtil.date());
+//        按顺序：退费标记、支付标记、执行标记
+        consume.setTakeMed(0);
+        consume.setPayment(0);
+        consume.setExecute(0);
         try {
             boolean b = consumeService.saveOrUpdate(consume);
             if (b) {

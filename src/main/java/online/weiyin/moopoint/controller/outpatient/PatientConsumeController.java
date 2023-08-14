@@ -63,7 +63,7 @@ public class PatientConsumeController {
                 return JSONUtil.toJsonPrettyStr(Result.fail("操作失败"));
             }
         } else {
-            return JSONUtil.toJsonPrettyStr(Result.fail("退费失败，未退药品/处置"));
+            return JSONUtil.toJsonPrettyStr(Result.fail("退费失败，还有未完成的前置项目"));
         }
     }
 }

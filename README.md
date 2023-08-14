@@ -216,7 +216,7 @@ return: 无
 ```
 ### 药房/医技处置业务
 ```
-url:    /outdoctors/consume
+url:    /outdoctors/consume/
 method: PUT
 arg:    Consume - 待写入类对象
 des:    插入一条处置结果，根据调用源不同给出不同结果

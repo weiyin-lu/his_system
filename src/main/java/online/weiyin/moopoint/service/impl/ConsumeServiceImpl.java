@@ -31,8 +31,7 @@ public class ConsumeServiceImpl extends ServiceImpl<ConsumeMapper, Consume> impl
     public List<Consume> selectCheckoutListByRecordId(int recordId) {
         QueryWrapper wrapper = QueryWrapper.create()
                 .where(CONSUME.RECORD_ID.eq(recordId))
-                .and(CONSUME.TYPE.eq("检查"))
-                .or(CONSUME.TYPE.eq("处置"));
+                .and(CONSUME.TYPE.eq("检查"));
         List<Consume> consumes = consumeMapper.selectListByQuery(wrapper);
         return consumes;
     }
