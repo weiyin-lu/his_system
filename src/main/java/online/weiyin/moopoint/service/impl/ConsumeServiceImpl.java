@@ -101,7 +101,8 @@ public class ConsumeServiceImpl extends ServiceImpl<ConsumeMapper, Consume> impl
     @Override
     public boolean updateTakeMed(int id) {
         Consume consume = UpdateEntity.of(Consume.class, id);
-        consume.setExecute(1);
+//        consume.setExecute(1);
+        consume.setTakeMed(1);
 
         int update = consumeMapper.update(consume);
         return update > 0;
