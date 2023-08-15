@@ -36,8 +36,10 @@ public class PatientServiceImpl extends ServiceImpl<PatientMapper, Patient>
                 .from(PATIENT)
                 .rightJoin(CONSUME).on(PATIENT.RECORD_ID.eq(CONSUME.RECORD_ID))
                 .groupBy(PATIENT.ID)
-                .where(CONSUME.TYPE.eq("检查"))
-                .or(CONSUME.TYPE.eq("处置"));
+                .where(CONSUME.TYPE.eq("检查"));
+//              不带处置
+//                .or(CONSUME.TYPE.eq("处置"));
+
         List<Patient> patients = patientMapper.selectListByQuery(wrapper);
 
         return patients;
