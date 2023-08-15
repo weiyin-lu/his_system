@@ -40,8 +40,7 @@ public class ConsumeServiceImpl extends ServiceImpl<ConsumeMapper, Consume> impl
     public List<Consume> selectMedicineByRecordId(int recordId) {
         QueryWrapper wrapper = QueryWrapper.create()
                 .where(CONSUME.RECORD_ID.eq(recordId))
-                .and(CONSUME.TYPE.eq("中药"))
-                .or(CONSUME.TYPE.eq("西药"));
+                .and(CONSUME.TYPE.eq("中药").or(CONSUME.TYPE.eq("西药")));
         List<Consume> consumes = consumeMapper.selectListByQuery(wrapper);
         return consumes;
     }
