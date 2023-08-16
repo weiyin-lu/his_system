@@ -11,7 +11,7 @@ import java.util.Date;
 /**
  * @Classname Medrecord
  * @Description 问诊信息实体类
- * @Version 1.0.0
+ * @Version 1.0.1
  * @Date 2023/08/10 下午 01:45
  * @Created by 卢子昂
  */
@@ -33,7 +33,6 @@ public class Medrecord {
     private String allergy;
     @Column("phy_exam")
     private String phyExam;
-    private Integer type;
     @Column("ICD_code")
     private String icdCode;
     private Date time;

@@ -11,7 +11,7 @@ import java.util.Date;
 /**
  * @Classname Patient
  * @Description 挂号实体类
- * @Version 1.0.0
+ * @Version 1.0.1
  * @Date 2023/8/7 17:38
  * @Created by 陈浩东
  */
@@ -40,14 +40,8 @@ public class Patient {
     private String regLevel;
     private Integer cost;
     private String subject;
-    @Column("rec_book")
-    private Integer recBook;
-    private Date booktime;
     private String state;
     private String noon;
-    @Column("recepit_id")
-    private Integer recepitId;
     @Column("precise_time")
     private Date preciseTime;
-
 }

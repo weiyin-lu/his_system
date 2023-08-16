@@ -59,6 +59,7 @@ public class AuthController {
 //    解析token
     @PutMapping("/")
     @ResponseBody
+    @SkipAuth
     public String parse(@RequestBody String token) {
         Result<Object> ok = Result.ok(TokenUtil.parseToken(token));
         return JSONUtil.toJsonPrettyStr(ok);

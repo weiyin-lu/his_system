@@ -9,7 +9,7 @@ import lombok.Data;
 /**
  * @Classname Nodrug
  * @Description 医技列表实体类
- * @Version 1.0.0
+ * @Version 1.0.1
  * @Date 2023/08/09 下午 02:32
  * @Created by 卢子昂
  */
@@ -25,7 +25,6 @@ public class Nodrug {
     @Column("dept_id")
     private Integer deptId;
     private String subject;
-    private Integer type;
     @Column(isLogicDelete = true)
     private Integer status;
 }

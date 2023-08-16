@@ -39,7 +39,7 @@ public class MedrecordPatientController {
 //    结诊
     @GetMapping("/completed/{id}")
     @ResponseBody
-    public String complete(int id) {
+    public String complete(@PathVariable Integer id) {
         Patient patient = new Patient();
         patient.setState("结诊");
         patient.setId(id);

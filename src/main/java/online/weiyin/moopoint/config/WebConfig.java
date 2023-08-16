@@ -21,6 +21,6 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new CORSInterceptor()).addPathPatterns("/**"); //跨域拦截器，必须在最上边
-//        registry.addInterceptor(new AuthInterceptor()); //token拦截器，测试时可以注释掉
+        registry.addInterceptor(new AuthInterceptor()); //token拦截器，测试时可以注释掉
     }
 }

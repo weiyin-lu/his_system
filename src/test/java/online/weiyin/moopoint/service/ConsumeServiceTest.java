@@ -39,10 +39,6 @@ class ConsumeServiceTest {
         consume.setPrice(465F);
         consume.setDeptId(10);
         consume.setNumber(1);
-        consume.setAmount(465);
-
-//      后端自己赋值的
-        consume.setCharge(1);
 
         consume.setTime(new Date());
 

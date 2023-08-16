@@ -8,7 +8,7 @@ import lombok.Data;
 /**
  * @Classname Ill
  * @Description 诊断病实体类
- * @Version 1.0.0
+ * @Version 1.0.1
  * @Date 2023/08/10 下午 09:28
  * @Created by 卢子昂
  */
@@ -26,6 +26,4 @@ public class Ill {
     private String illType;
     @Column(isLogicDelete = true)
     private Integer status;
-    @Column("ill_kind")
-    private Integer illKind;
 }

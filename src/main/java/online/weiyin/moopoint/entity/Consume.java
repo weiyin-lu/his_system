@@ -11,7 +11,7 @@ import java.util.Date;
 /**
  * @Classname Consume
  * @Description 医技、药房订单实体类
- * @Version 1.0.0
+ * @Version 1.0.1
  * @Date 2023/08/09 下午 02:01
  * @Created by 卢子昂
  */
@@ -20,8 +20,6 @@ import java.util.Date;
 public class Consume {
     @Id(keyType = KeyType.Auto)
     private Integer id;
-    @Column("receipt_id")
-    private Integer receiptId;
     @Column("record_id")
     private Integer recordId;
     @Column("cost_name")
@@ -29,10 +27,8 @@ public class Consume {
     private Float price;
     @Column("dept_id")
     private Integer deptId;
-    private Integer charge;
     private Integer execute;
     private Integer number;
-    private Integer amount;
     private Date time;
     private Integer payment;
     private Integer takeMed;
@@ -40,8 +36,6 @@ public class Consume {
     private String subject;
     private String aim;
     private String body;
-    private Integer hurry;
-    private String prescription;
     private String useage;
     private String consumption;
     private String frequency;
