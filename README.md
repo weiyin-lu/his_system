@@ -169,7 +169,7 @@ url:    /patients/consume/{recordId}
 method: GET
 arg:    int - consume表要查询的信息的record_id
 des:    查询挂号信息下的处方处置信息
-return: List<Consume> - 挂号级别信息结果集
+return: List<Consume> - 挂号信息下的处方处置信息
 ```
 ```
 url:    /patients/consume/pay/{id}
@@ -183,7 +183,7 @@ url:    /patients/consume/back/{id}
 method: GET
 arg:    int - consume表待退费的主键id
 des:    退费（必须有医技/药房医生操作退药/退处置后才能退费）
-return: List<Consume> - 挂号级别信息结果集
+return: 无
 ```
 ## 门诊医生工作站
 ### 患者选择业务
@@ -207,7 +207,7 @@ url:    /outdoctors/{recordId}
 method: GET
 arg:    int - medrecord表的record_id
 des:    查询指定病人的问诊信息，查询结果允许为null
-return: List<Consume> - 挂号级别信息结果集
+return: Medrecord - 指定病人的问诊信息
 ```
 ```
 url:    /outdoctors/
