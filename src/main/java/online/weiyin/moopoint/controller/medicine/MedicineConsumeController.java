@@ -71,7 +71,7 @@ public class MedicineConsumeController {
         if (b) {
             boolean b1 = consumeService.updateExecute(id,0);
 //          退药标记
-            boolean b2 = consumeService.updateTakeMed(1);
+            boolean b2 = consumeService.updateTakeMed(id);
             if (b1 && b2) {
                 return JSONUtil.toJsonPrettyStr(Result.success());
             } else {
